@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "قوائم البيانات";
+}
+
+<div style="text-align: center; direction: rtl; color:white;">
+    <h2>@ViewBag.Title</h2>
+
+<hr />
+
+
+    <table id="DBListTable" align="center">
+       
+        <tr>
+            <td>
+                @Html.ActionLink("التجمعات", "Index", "Clusters")
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.ActionLink("النشاط", "Index", "Fields")
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.ActionLink("المنتجات", "Index", "Products")
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.ActionLink("المراكز", "Index", "Districts")
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.ActionLink("القرى", "Index", "Villages")
+            </td>
+
+        </tr>
+
+</table>
+</div>
+

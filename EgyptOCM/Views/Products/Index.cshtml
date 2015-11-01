@@ -1,0 +1,91 @@
+﻿@model IEnumerable<EgyptOCM.Models.Product>
+
+@{
+    ViewBag.Title = "قائمة المنتجات";
+}
+
+<div style="font-family:Arial; text-align: center; direction: rtl; color:white">
+    <h2>@ViewBag.Title</h2>
+    <hr />
+    <p>
+        <h3> @Html.ActionLink("اضافة منتج جديد", "Create", null, new { style = "color:yellow" })</h3>
+    </p>
+</div>
+
+<div class="clusterDetailList">
+    <table id="productDetailTable" class="display compact" cellspacing="0">
+        <thead>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Field.Field_Name)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Sector.Sector_Name)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Product_Name)
+                </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Field.Field_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sector.Sector_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product_Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("تعديل", "Edit", new { id = item.Product_ID }) |
+                        @Html.ActionLink("تفاصيل", "Details", new { id = item.Product_ID }) |
+                        @Html.ActionLink("حذف", "Delete", new { id = item.Product_ID })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('#productDetailTable').DataTable({
+            //"sdom": '<lf><t><p>',
+            "sdom": '<"center"ftp>',
+            // "columns": [{ "width": "20%" }, null],
+            "sPaginationType": "full_numbers",
+            "bLengthChange": false,
+            "oLanguage": {
+                "sSearch": "بحث",
+                "sEmptyTable": "لايوجد منتجات",
+                "sInfoEmpty": "",
+                "sZeroRecords": "لايوجد منتجات",
+                //"sInfo": "_TOTAL_ من _END_ الى _START_",
+                "sInfo": "",
+                "sInfoFiltered": "",
+                //"sLengthMenu": ' <select>' +
+                //'<option value="10">10</option>' +
+                //'<option value="15">15</option>' +
+                //'<option value="20">20</option>' +
+                //'<option value="25">25</option>' +
+                ////'<option value="50">50</option>' +
+                ////'<option value="-1">الكل</option>' +
+                //'</select>عرض',
+                "oPaginate": {
+                    "sFirst": "<<",
+                    "sPrevious": "<",
+                    "sNext": ">",
+                    "sLast": ">>"
+                }
+            }
+        });
+
+    })
+</script>

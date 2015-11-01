@@ -1,0 +1,310 @@
+﻿body {
+    padding-top: 20px;
+    padding-bottom: 2px;
+background: #d0d0d0;
+background-image: url("/Images/zenbg-1.png"), url("/Images/zenbg-1.png");
+background-repeat: repeat-x, repeat;
+overflow: auto;
+width:1250px;
+position:center;
+margin:auto;
+
+}
+
+.bodyclear {
+    padding-top: 20px;
+    padding-bottom: 2px;
+width:1250px;
+position:center;
+margin:auto;
+background-color:white;
+padding-left: 20px;
+padding-right:20px;
+}
+
+
+.footer{
+    color:white;
+    background-color:black;
+    width:100%;
+    min-height: 10px;
+    margin:auto;
+    direction:rtl;
+   
+}
+.banner{
+    height:1em;
+
+}
+
+#myheader{
+    display: table;
+    width:100%;
+    height:120px;
+    text-align:center; 
+    margin-top:0px;
+    direction:rtl;
+    font-size:large;
+    color:white;  
+}
+
+#maincontents{
+    display: table;
+    width:100%;
+    text-align:center; 
+    margin-top:0px;
+}
+
+#myfooter{
+    display: table;
+    width:100%;
+    /*height:10px;*/
+    text-align:center; 
+    margin-top:0px;
+    direction:rtl;
+    font-size:medium;
+    color:white;  
+}
+
+#leftlogo {
+    display: table-cell;
+    width: 270px;   
+  
+}
+
+#rightlogo {
+   	width: 270px;
+   display: table-cell;
+	 
+}
+
+#middlenote {
+    display: table-cell;
+    width:700px;
+    vertical-align:middle;
+              
+}
+
+.a{
+    font-weight:normal;
+}
+
+/* unvisited link */
+a.rev:link {
+    color: yellow;
+}
+
+/* visited link */
+a.rev:visited {
+    color: yellow ;
+}
+
+/* mouse over link */
+a.rev:hover {
+    color: HighlightText;
+}
+
+/* selected link */
+a.rev:active {
+    color: blue;
+}
+
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 2px;
+    padding-right: 2px;
+    position:absolute;
+    position:center;
+    top:150px;
+
+}*/
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+
+
+input[type=submit] {
+    border: 1px solid blue;
+    border-radius: 10px;
+    color: white;
+    background: blue;
+    padding: 5px 10px;
+    font-size:large;
+   width:100%;
+}
+input[type=submit]:hover {
+    background: lightblue;
+    color:black;
+}
+
+.leftPart{
+    width:270px;
+    float:left;
+    margin-left:1px;
+    margin-right:1px;
+    margin-top:0px;
+    text-align:center;
+   
+}
+
+.leftPart2{
+    width:270px;
+    float:left;
+    margin-left:1px;
+    margin-right:1px;
+    margin-top:0px;
+    text-align:center;
+   
+}
+
+.middlePart{
+    width:700px;
+    float:left;
+    text-align:center;
+    position:relative;
+    margin-left:1px;
+    margin-right:1px;
+     
+}
+
+.rightPart{
+    width:270px;
+    float:left;
+    text-align:right;
+    position:relative;
+   
+     margin-left:1px;
+    margin-right:1px;
+    margin-top:0px;
+}
+
+.filters1{
+   
+    padding-left:0px; 
+    padding-right:0px; 
+    background-color:#d5eaee;
+    color:black; 
+    border-radius:10px;
+    font-size:medium;
+}
+.filters2{
+   
+    padding-left:0px; 
+    
+    padding-right:0px; 
+    background-color:#d5eaee;
+    color:black; 
+    border-radius:10px;
+    font-size:medium;
+}
+
+
+.control-label{
+    padding-left:0px; 
+    padding-right:0px; 
+    background-color:#d5eaee; 
+    color:black; 
+    border-radius:10px;
+    border-color:blue;
+}
+
+.mapLegend{
+   position:center; 
+   top:5px; 
+   padding-top:5px; 
+   height:50px; 
+   width:700px;
+   border:1px solid blue; 
+   border-radius: 10px; 
+   background-color:#d5eaee;
+   color:black;
+   font-size:medium;
+}
+
+.clusterList{
+    padding-left:0px; 
+    padding-right:0px; 
+    background-color:#d5eaee; 
+    color:black; 
+    border-radius:10px;
+    font-size:medium;
+    direction:rtl;
+}
+
+.clusterDetailList{
+    padding-left:0px; 
+    padding-right:0px; 
+    background-color:#d5eaee; 
+    color:black; 
+    border-radius:10px;
+    font-size:medium;
+    direction:rtl;
+}
+
+.form-control{
+    padding-left:1px; 
+    padding-right:1px; 
+    border-radius:10px;
+     border-color:blue;
+    text-wrap:normal;
+}
+
+
+/*border:solid 1px blue; border-spacing:0px; border-collapse:separate;*/ 
+
+#ProfileTable {position:center; direction:rtl; font-size:x-large; word-wrap: break-word; width:85%}
+#ProfileTable th {font-weight:bold; color:white; background-color:blue;  text-align: center}
+#ProfileTable .c1 {background-color:lightblue;}
+#ProfileTable .c2 {background-color:white;}
+#ProfileTable td, #ProfileTable th {border:solid 1px blue; padding:4px;}
+
+#ProfileTable2 {position:center; direction:rtl; font-size:x-large; word-wrap: break-word;}
+#ProfileTable2 th {font-weight:bold; color:white; background-color:blue;  text-align: center}
+#ProfileTable2 .c1 {background-color:lightblue;}
+#ProfileTable2 .c2 {background-color:white;}
+#ProfileTable2 td, #ProfileTable2 th {border:solid 1px blue; padding:4px;}
+
+#FooterTable {direction:rtl; width:85%; background-color:white; color:black; font-size:large; }
+#FooterTable .xc1 { font-size:x-large; text-align:right;}
+#FooterTable .xc2 { font-size:small;text-align:left; word-wrap: break-word;}
+#FooterTable td, #FooterTable th {border:solid 1px blue; padding:4px; border-left: none; border-right: none;}
+
+
+#FooterTable2 {position:center; direction:rtl; font-size:x-large; word-wrap: break-word; width:85%; }
+#FooterTable2 th,#FooterTable td {font-weight:bold; color:black;  text-align: center}
+
+#FooterTableSmall {direction:rtl; width:30%; background-color:white; color:black; font-size:large; text-align:center}
+#FooterTableSmall td, #FooterTable th {border:solid 1px blue; padding:4px; border-left: none; border-right: none;}
+
+
+#GovtClustersTable {position:center; direction:rtl; font-size:x-large; word-wrap: break-word; width:85%}
+#GovtClustersTable th {font-weight:bold; color:white; background-color:blue;  text-align: center}
+#GovtClustersTable .c1 {background-color:white;}
+#GovtClustersTable .c2 {background-color:white;}
+#GovtClustersTable td, #GovtClustersTable th {border:solid 1px blue; padding:4px;}
+
+#SimilarClustersTable {position:center; direction:rtl; font-size:x-large; word-wrap: break-word; width:85%}
+#SimilarClustersTable th {font-weight:bold; color:white; background-color:blue;  text-align: center}
+#SimilarClustersTable td, #SimilarClustersTable th {border:solid 1px blue; padding:4px; }
+#SimilarClustersTable td {color:black; background-color:white; }
+
+
+#ClusterTable {border:solid 1px blue; border-spacing:0px; border-collapse:separate; direction:rtl; font-size:x-large; word-wrap: break-word}
+#ClusterTable th {font-weight:bold; color:white; background-color:blue;  text-align: center}
+#ClusterTable td, #ClusterTable th {border:solid 1px blue; padding:4px;}
+
+#ClusterDetailTable {border:solid 1px blue; border-spacing:0px; border-collapse:separate; direction:rtl; font-size:x-large; word-wrap: break-word}
+#ClusterDetailTable th {font-weight:bold; color:white; background-color:blue;  text-align: center}
+#ClusterDetailTable td, #ClusterDetailTable th {border:solid 1px blue; padding:4px;}
+
+#DBListTable {direction:rtl; width:30%; background-color:white; color:black; font-size:large; }
+#DBListTable td, #FooterTable th {border:solid 1px blue; padding:4px; border-left: none; border-right: none;}
+
+#ContactTable {direction:rtl; width:60%; background-color:white; color:black; font-size:large; }
+#ContactTable td, #FooterTable th {border:solid 1px blue; padding:4px; border-left: none; border-right: none;}

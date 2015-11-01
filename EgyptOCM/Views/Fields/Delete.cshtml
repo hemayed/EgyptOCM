@@ -1,0 +1,77 @@
+﻿@model EgyptOCM.Models.Field
+
+@{
+    ViewBag.Title = "حذف النشاط";
+}
+<div style="font-family:Arial; text-align: center; direction: rtl; color:white">
+    <h2>@ViewBag.Title</h2>
+    <h3>هل تريد فعلا حذف النشاط؟ </h3>
+    <hr />
+</div>
+
+@{
+    ViewBag.Title = @Html.DisplayFor(model => model.Field_Name);
+}
+<div style="text-align: center; direction: rtl; color:white">
+    <h2>@Html.DisplayFor(model => model.Field_Name)</h2>
+</div>
+<hr />
+
+       <div id="FieldDetailContainer">
+
+    <table id="ProfileTable2" align="center">
+        <colgroup>
+            <col class="c1" style="width: 50%;">
+            <col class="c2" style="width: 50%;">
+        </colgroup>
+        <tr>
+            <th>البند</th>
+            <th>البيان</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Sector.Sector_Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Sector.Sector_Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Field_Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Field_Name)
+            </td>
+        </tr>
+    </table>
+    <br />
+</div>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <table id="FooterTable2" align="center">
+        <tr>
+            <td>
+
+                <input type="submit" value="احذف النشاط" class="btn btn-default " />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <center>
+
+                    @Html.ActionLink("عودة للقائمة الرئيسية", "Index", null, new { style = "color:yellow;" })
+                </center>
+            </td>
+        </tr>
+    </table>
+
+}

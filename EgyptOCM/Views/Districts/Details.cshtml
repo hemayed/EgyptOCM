@@ -1,0 +1,43 @@
+﻿@model EgyptOCM.Models.District
+
+<div id="DistrictDetails">
+    @{
+        ViewBag.Title = @Html.DisplayFor(model => model.District_Name);
+    }
+    <div style="font-family:Arial; text-align: center; direction: rtl; color:white;">
+        <h2>@Html.DisplayFor(model => model.District_Name)</h2>
+    </div>
+    <hr />
+
+    <div id="DistrictDetailContainer">
+
+        <table id="ProfileTable2" align="center">
+            <colgroup>
+                <col class="c1" style="width: 50%;">
+                <col class="c2" style="width: 50%;">
+            </colgroup>
+            <tr>
+                <th>البند</th>
+                <th>البيان</th>
+            </tr>
+            <tr>
+                <td>     @Html.DisplayNameFor(model => model.Governorate.Govt_Name)       </td>
+                <td>      @Html.DisplayFor(model => model.Governorate.Govt_Name)            </td>
+            </tr>
+            <tr>
+                <td>                 @Html.DisplayNameFor(model => model.District_Name)            </td>
+                <td>           @Html.DisplayFor(model => model.District_Name)            </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+</div>
+
+<table id="FooterTableSmall" align="center" >
+
+    <tr>
+        <td>
+            @Html.ActionLink("عودة للقائمة الرئيسية", "Index")
+        </td>
+    </tr>
+</table>
