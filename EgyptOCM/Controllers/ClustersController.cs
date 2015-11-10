@@ -38,15 +38,7 @@ namespace EgyptOCM.Controllers
             {
                 return HttpNotFound();
             }
-            cluster.District = db.Districts.Find(cluster.District_ID);
-            cluster.Village = db.Villages.Find(cluster.Village_ID);
-            cluster.ClusterNature = db.ClusterNatures.Find(cluster.ClusterNature_ID);
-            cluster.ClusterType = db.ClusterTypes.Find(cluster.ClusterType_ID);
-            cluster.ProductSeason = db.ProductSeasons.Find(cluster.ProductSeason_ID);
-            cluster.ExportFlag = db.ExportFlags.Find(cluster.ExportFlag_ID);
-            cluster.IncomeLevel = db.IncomeLevels.Find(cluster.IncomeLevel_ID);
-            cluster.MarketType = db.MarketTypes.Find(cluster.MarketType_ID);
-
+           
             return View(cluster);
         }
 
@@ -372,14 +364,7 @@ namespace EgyptOCM.Controllers
             {
                 return HttpNotFound();
             }
-            cluster.District = db.Districts.Find(cluster.District_ID);
-            cluster.Village = db.Villages.Find(cluster.Village_ID);
-            cluster.ClusterNature = db.ClusterNatures.Find(cluster.ClusterNature_ID);
-            cluster.ClusterType = db.ClusterTypes.Find(cluster.ClusterType_ID);
-            cluster.ProductSeason = db.ProductSeasons.Find(cluster.ProductSeason_ID);
-            cluster.ExportFlag = db.ExportFlags.Find(cluster.ExportFlag_ID);
-            cluster.IncomeLevel = db.IncomeLevels.Find(cluster.IncomeLevel_ID);
-            cluster.MarketType = db.MarketTypes.Find(cluster.MarketType_ID);
+           
 
             return View(cluster);
         }

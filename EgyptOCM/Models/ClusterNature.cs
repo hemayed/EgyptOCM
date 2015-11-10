@@ -14,7 +14,14 @@ namespace EgyptOCM.Models
     
     public partial class ClusterNature
     {
+        public ClusterNature()
+        {
+            this.Clusters = new HashSet<Cluster>();
+        }
+    
         public string ClusterNature_ID { get; set; }
         public string ClusterNature_Name { get; set; }
+    
+        public virtual ICollection<Cluster> Clusters { get; set; }
     }
 }

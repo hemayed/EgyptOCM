@@ -14,7 +14,14 @@ namespace EgyptOCM.Models
     
     public partial class MarketType
     {
+        public MarketType()
+        {
+            this.Clusters = new HashSet<Cluster>();
+        }
+    
         public string MarketType_ID { get; set; }
         public string MarketType_Name { get; set; }
+    
+        public virtual ICollection<Cluster> Clusters { get; set; }
     }
 }

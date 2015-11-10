@@ -14,7 +14,14 @@ namespace EgyptOCM.Models
     
     public partial class ExportFlag
     {
+        public ExportFlag()
+        {
+            this.Clusters = new HashSet<Cluster>();
+        }
+    
         public string ExportFlag_ID { get; set; }
         public string ExportFlag_Name { get; set; }
+    
+        public virtual ICollection<Cluster> Clusters { get; set; }
     }
 }

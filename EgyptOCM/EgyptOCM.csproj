@@ -237,6 +237,9 @@
     <Compile Include="Models\Sector.cs">
       <DependentUpon>EgyptOCM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>EgyptOCM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Village.cs">
       <DependentUpon>EgyptOCM.tt</DependentUpon>
     </Compile>

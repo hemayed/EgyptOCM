@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EOCMDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EOCMDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -147,6 +147,16 @@
           <Property Name="Sector_ID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Sector_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Villages">
           <Key>
             <PropertyRef Name="Village_ID" />
@@ -156,6 +166,54 @@
           <Property Name="Govt_ID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="District_ID" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <Association Name="FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID">
+          <End Role="ClusterNatures" Type="Self.ClusterNatures" Multiplicity="0..1" />
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClusterNatures">
+              <PropertyRef Name="ClusterNature_ID" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="ClusterNature_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID">
+          <End Role="ClusterTypes" Type="Self.ClusterTypes" Multiplicity="0..1" />
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClusterTypes">
+              <PropertyRef Name="ClusterType_ID" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="ClusterType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_Districts_District_ID">
+          <End Role="Districts" Type="Self.Districts" Multiplicity="0..1" />
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Districts">
+              <PropertyRef Name="District_ID" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="District_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID">
+          <End Role="ExportFlags" Type="Self.ExportFlags" Multiplicity="0..1" />
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExportFlags">
+              <PropertyRef Name="ExportFlag_ID" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="ExportFlag_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_Clusters_dbo_Fields_Field_ID">
           <End Role="Fields" Type="Self.Fields" Multiplicity="1" />
           <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
@@ -180,6 +238,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID">
+          <End Role="IncomeLevels" Type="Self.IncomeLevels" Multiplicity="0..1" />
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeLevels">
+              <PropertyRef Name="IncomeLevel_ID" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="IncomeLevel_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID">
+          <End Role="MarketTypes" Type="Self.MarketTypes" Multiplicity="0..1" />
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MarketTypes">
+              <PropertyRef Name="MarketType_ID" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="MarketType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_Clusters_dbo_Products_Product_ID">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
@@ -192,6 +274,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID">
+          <End Role="ProductSeasons" Type="Self.ProductSeasons" Multiplicity="0..1" />
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSeasons">
+              <PropertyRef Name="ProductSeason_ID" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="ProductSeason_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_Clusters_dbo_Sectors_Sector_ID">
           <End Role="Sectors" Type="Self.Sectors" Multiplicity="1" />
           <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
@@ -201,6 +295,18 @@
             </Principal>
             <Dependent Role="Clusters">
               <PropertyRef Name="Sector_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_Villages_Village_ID">
+          <End Role="Villages" Type="Self.Villages" Multiplicity="0..1" />
+          <End Role="Clusters" Type="Self.Clusters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Villages">
+              <PropertyRef Name="Village_ID" />
+            </Principal>
+            <Dependent Role="Clusters">
+              <PropertyRef Name="Village_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -290,7 +396,24 @@
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSeasons" EntityType="Self.ProductSeasons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sectors" EntityType="Self.Sectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Villages" EntityType="Self.Villages" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID" Association="Self.FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID">
+            <End Role="ClusterNatures" EntitySet="ClusterNatures" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID" Association="Self.FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID">
+            <End Role="ClusterTypes" EntitySet="ClusterTypes" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_Districts_District_ID" Association="Self.FK_dbo_Clusters_dbo_Districts_District_ID">
+            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID" Association="Self.FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID">
+            <End Role="ExportFlags" EntitySet="ExportFlags" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Clusters_dbo_Fields_Field_ID" Association="Self.FK_dbo_Clusters_dbo_Fields_Field_ID">
             <End Role="Fields" EntitySet="Fields" />
             <End Role="Clusters" EntitySet="Clusters" />
@@ -299,12 +422,28 @@
             <End Role="Governorates" EntitySet="Governorates" />
             <End Role="Clusters" EntitySet="Clusters" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID" Association="Self.FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID">
+            <End Role="IncomeLevels" EntitySet="IncomeLevels" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID" Association="Self.FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID">
+            <End Role="MarketTypes" EntitySet="MarketTypes" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Clusters_dbo_Products_Product_ID" Association="Self.FK_dbo_Clusters_dbo_Products_Product_ID">
             <End Role="Products" EntitySet="Products" />
             <End Role="Clusters" EntitySet="Clusters" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID" Association="Self.FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID">
+            <End Role="ProductSeasons" EntitySet="ProductSeasons" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Clusters_dbo_Sectors_Sector_ID" Association="Self.FK_dbo_Clusters_dbo_Sectors_Sector_ID">
             <End Role="Sectors" EntitySet="Sectors" />
+            <End Role="Clusters" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_Villages_Village_ID" Association="Self.FK_dbo_Clusters_dbo_Villages_Village_ID">
+            <End Role="Villages" EntitySet="Villages" />
             <End Role="Clusters" EntitySet="Clusters" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Districts_dbo_Governorates_Govt_ID" Association="Self.FK_dbo_Districts_dbo_Governorates_Govt_ID">
@@ -332,8 +471,7 @@
             <End Role="Villages" EntitySet="Villages" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EOCMDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -353,6 +491,7 @@
           </Key>
           <Property Name="ClusterNature_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClusterNature_Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clusters" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID" FromRole="ClusterNature" ToRole="Cluster" />
         </EntityType>
         <EntityType Name="Cluster">
           <Key>
@@ -406,6 +545,14 @@
           <NavigationProperty Name="Governorate" Relationship="Self.FK_dbo_Clusters_dbo_Governorates_Govt_ID" FromRole="Clusters" ToRole="Governorates" />
           <NavigationProperty Name="Product" Relationship="Self.FK_dbo_Clusters_dbo_Products_Product_ID" FromRole="Clusters" ToRole="Products" />
           <NavigationProperty Name="Sector" Relationship="Self.FK_dbo_Clusters_dbo_Sectors_Sector_ID" FromRole="Clusters" ToRole="Sectors" />
+          <NavigationProperty Name="District" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_Districts_District_ID" FromRole="Cluster" ToRole="District" />
+          <NavigationProperty Name="Village" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_Villages_Village_ID" FromRole="Cluster" ToRole="Village" />
+          <NavigationProperty Name="ClusterNature" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID" FromRole="Cluster" ToRole="ClusterNature" />
+          <NavigationProperty Name="ClusterType" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID" FromRole="Cluster" ToRole="ClusterType" />
+          <NavigationProperty Name="ExportFlag" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID" FromRole="Cluster" ToRole="ExportFlag" />
+          <NavigationProperty Name="IncomeLevel" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID" FromRole="Cluster" ToRole="IncomeLevel" />
+          <NavigationProperty Name="MarketType" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID" FromRole="Cluster" ToRole="MarketType" />
+          <NavigationProperty Name="ProductSeason" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID" FromRole="Cluster" ToRole="ProductSeason" />
         </EntityType>
         <EntityType Name="ClusterType">
           <Key>
@@ -413,6 +560,7 @@
           </Key>
           <Property Name="ClusterType_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClusterType_Name" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clusters" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID" FromRole="ClusterType" ToRole="Cluster" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -423,6 +571,7 @@
           <Property Name="Govt_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Governorate" Relationship="Self.FK_dbo_Districts_dbo_Governorates_Govt_ID" FromRole="Districts" ToRole="Governorates" />
           <NavigationProperty Name="Villages" Relationship="Self.FK_dbo_Villages_dbo_Districts_District_ID" FromRole="Districts" ToRole="Villages" />
+          <NavigationProperty Name="Clusters" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_Districts_District_ID" FromRole="District" ToRole="Cluster" />
         </EntityType>
         <EntityType Name="ExportFlag">
           <Key>
@@ -430,6 +579,7 @@
           </Key>
           <Property Name="ExportFlag_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ExportFlag_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clusters" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID" FromRole="ExportFlag" ToRole="Cluster" />
         </EntityType>
         <EntityType Name="Field">
           <Key>
@@ -460,6 +610,7 @@
           </Key>
           <Property Name="IncomeLevel_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IncomeLevel_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clusters" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID" FromRole="IncomeLevel" ToRole="Cluster" />
         </EntityType>
         <EntityType Name="MarketType">
           <Key>
@@ -467,6 +618,7 @@
           </Key>
           <Property Name="MarketType_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MarketType_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clusters" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID" FromRole="MarketType" ToRole="Cluster" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -486,6 +638,7 @@
           </Key>
           <Property Name="ProductSeason_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProductSeason_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clusters" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID" FromRole="ProductSeason" ToRole="Cluster" />
         </EntityType>
         <EntityType Name="Sector">
           <Key>
@@ -507,6 +660,7 @@
           <Property Name="District_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="District" Relationship="Self.FK_dbo_Villages_dbo_Districts_District_ID" FromRole="Villages" ToRole="Districts" />
           <NavigationProperty Name="Governorate" Relationship="Self.FK_dbo_Villages_dbo_Governorates_Govt_ID" FromRole="Villages" ToRole="Governorates" />
+          <NavigationProperty Name="Clusters" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_Villages_Village_ID" FromRole="Village" ToRole="Cluster" />
         </EntityType>
         <Association Name="FK_dbo_Clusters_dbo_Fields_Field_ID">
           <End Role="Fields" Type="Self.Field" Multiplicity="1" />
@@ -683,7 +837,146 @@
             <End Role="Sectors" EntitySet="Sectors" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="EOCMDataModel.sysdiagram" />
+          <AssociationSet Name="FK_dbo_Clusters_dbo_Districts_District_ID" Association="EOCMDataModel.FK_dbo_Clusters_dbo_Districts_District_ID">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Cluster" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_Villages_Village_ID" Association="EOCMDataModel.FK_dbo_Clusters_dbo_Villages_Village_ID">
+            <End Role="Village" EntitySet="Villages" />
+            <End Role="Cluster" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID" Association="EOCMDataModel.FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID">
+            <End Role="ClusterNature" EntitySet="ClusterNatures" />
+            <End Role="Cluster" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID" Association="EOCMDataModel.FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID">
+            <End Role="ClusterType" EntitySet="ClusterTypes" />
+            <End Role="Cluster" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID" Association="EOCMDataModel.FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID">
+            <End Role="ExportFlag" EntitySet="ExportFlags" />
+            <End Role="Cluster" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID" Association="EOCMDataModel.FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID">
+            <End Role="IncomeLevel" EntitySet="IncomeLevels" />
+            <End Role="Cluster" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID" Association="EOCMDataModel.FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID">
+            <End Role="MarketType" EntitySet="MarketTypes" />
+            <End Role="Cluster" EntitySet="Clusters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID" Association="EOCMDataModel.FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID">
+            <End Role="ProductSeason" EntitySet="ProductSeasons" />
+            <End Role="Cluster" EntitySet="Clusters" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Clusters_dbo_Districts_District_ID">
+          <End Type="EOCMDataModel.District" Role="District" Multiplicity="0..1" />
+          <End Type="EOCMDataModel.Cluster" Role="Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="District_ID" />
+            </Principal>
+            <Dependent Role="Cluster">
+              <PropertyRef Name="District_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_Villages_Village_ID">
+          <End Type="EOCMDataModel.Village" Role="Village" Multiplicity="0..1" />
+          <End Type="EOCMDataModel.Cluster" Role="Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Village">
+              <PropertyRef Name="Village_ID" />
+            </Principal>
+            <Dependent Role="Cluster">
+              <PropertyRef Name="Village_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID">
+          <End Type="EOCMDataModel.ClusterNature" Role="ClusterNature" Multiplicity="0..1" />
+          <End Type="EOCMDataModel.Cluster" Role="Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClusterNature">
+              <PropertyRef Name="ClusterNature_ID" />
+            </Principal>
+            <Dependent Role="Cluster">
+              <PropertyRef Name="ClusterNature_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID">
+          <End Type="EOCMDataModel.ClusterType" Role="ClusterType" Multiplicity="0..1" />
+          <End Type="EOCMDataModel.Cluster" Role="Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClusterType">
+              <PropertyRef Name="ClusterType_ID" />
+            </Principal>
+            <Dependent Role="Cluster">
+              <PropertyRef Name="ClusterType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID">
+          <End Type="EOCMDataModel.ExportFlag" Role="ExportFlag" Multiplicity="0..1" />
+          <End Type="EOCMDataModel.Cluster" Role="Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExportFlag">
+              <PropertyRef Name="ExportFlag_ID" />
+            </Principal>
+            <Dependent Role="Cluster">
+              <PropertyRef Name="ExportFlag_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID">
+          <End Type="EOCMDataModel.IncomeLevel" Role="IncomeLevel" Multiplicity="0..1" />
+          <End Type="EOCMDataModel.Cluster" Role="Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeLevel">
+              <PropertyRef Name="IncomeLevel_ID" />
+            </Principal>
+            <Dependent Role="Cluster">
+              <PropertyRef Name="IncomeLevel_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID">
+          <End Type="EOCMDataModel.MarketType" Role="MarketType" Multiplicity="0..1" />
+          <End Type="EOCMDataModel.Cluster" Role="Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MarketType">
+              <PropertyRef Name="MarketType_ID" />
+            </Principal>
+            <Dependent Role="Cluster">
+              <PropertyRef Name="MarketType_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID">
+          <End Type="EOCMDataModel.ProductSeason" Role="ProductSeason" Multiplicity="0..1" />
+          <End Type="EOCMDataModel.Cluster" Role="Cluster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSeason">
+              <PropertyRef Name="ProductSeason_ID" />
+            </Principal>
+            <Dependent Role="Cluster">
+              <PropertyRef Name="ProductSeason_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -851,6 +1144,17 @@
                 <ScalarProperty Name="Village_Name" ColumnName="Village_Name" />
                 <ScalarProperty Name="Govt_ID" ColumnName="Govt_ID" />
                 <ScalarProperty Name="District_ID" ColumnName="District_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EOCMDataModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

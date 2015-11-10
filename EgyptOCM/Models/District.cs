@@ -17,6 +17,7 @@ namespace EgyptOCM.Models
         public District()
         {
             this.Villages = new HashSet<Village>();
+            this.Clusters = new HashSet<Cluster>();
         }
     
         public string District_ID { get; set; }
@@ -25,5 +26,6 @@ namespace EgyptOCM.Models
     
         public virtual Governorate Governorate { get; set; }
         public virtual ICollection<Village> Villages { get; set; }
+        public virtual ICollection<Cluster> Clusters { get; set; }
     }
 }

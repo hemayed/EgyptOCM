@@ -14,7 +14,14 @@ namespace EgyptOCM.Models
     
     public partial class ProductSeason
     {
+        public ProductSeason()
+        {
+            this.Clusters = new HashSet<Cluster>();
+        }
+    
         public string ProductSeason_ID { get; set; }
         public string ProductSeason_Name { get; set; }
+    
+        public virtual ICollection<Cluster> Clusters { get; set; }
     }
 }

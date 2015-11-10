@@ -63,18 +63,13 @@ namespace EgyptOCM.Models
         public virtual Governorate Governorate { get; set; }
         public virtual Product Product { get; set; }
         public virtual Sector Sector { get; set; }
-
-        // if you change the database and update the model
-        // make sure to add these lines to the models/cluster.cs
         public virtual District District { get; set; }
         public virtual Village Village { get; set; }
         public virtual ClusterNature ClusterNature { get; set; }
         public virtual ClusterType ClusterType { get; set; }
-        public virtual ProductSeason ProductSeason { get; set; }
         public virtual ExportFlag ExportFlag { get; set; }
         public virtual IncomeLevel IncomeLevel { get; set; }
         public virtual MarketType MarketType { get; set; }
-
-
+        public virtual ProductSeason ProductSeason { get; set; }
     }
 }

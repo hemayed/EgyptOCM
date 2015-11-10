@@ -12,20 +12,12 @@ namespace EgyptOCM.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Village
+    public partial class sysdiagram
     {
-        public Village()
-        {
-            this.Clusters = new HashSet<Cluster>();
-        }
-    
-        public string Village_ID { get; set; }
-        public string Village_Name { get; set; }
-        public string Govt_ID { get; set; }
-        public string District_ID { get; set; }
-    
-        public virtual District District { get; set; }
-        public virtual Governorate Governorate { get; set; }
-        public virtual ICollection<Cluster> Clusters { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

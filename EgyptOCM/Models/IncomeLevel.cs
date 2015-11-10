@@ -14,7 +14,14 @@ namespace EgyptOCM.Models
     
     public partial class IncomeLevel
     {
+        public IncomeLevel()
+        {
+            this.Clusters = new HashSet<Cluster>();
+        }
+    
         public string IncomeLevel_ID { get; set; }
         public string IncomeLevel_Name { get; set; }
+    
+        public virtual ICollection<Cluster> Clusters { get; set; }
     }
 }

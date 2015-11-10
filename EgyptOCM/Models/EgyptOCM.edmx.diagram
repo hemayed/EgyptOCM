@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="EOCMDataModel.ClusterNature" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.Cluster" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.ClusterType" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EOCMDataModel.District" Width="1.5" PointX="5.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EOCMDataModel.District" Width="1.5" PointX="5.375" PointY="20.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.ExportFlag" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.Field" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.Governorate" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
@@ -29,6 +29,15 @@
         <AssociationConnector Association="EOCMDataModel.FK_dbo_Products_dbo_Fields_Field_ID" ManuallyRouted="false" />
         <AssociationConnector Association="EOCMDataModel.FK_dbo_Villages_dbo_Governorates_Govt_ID" ManuallyRouted="false" />
         <AssociationConnector Association="EOCMDataModel.FK_dbo_Products_dbo_Sectors_Sector_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EOCMDataModel.sysdiagram" Width="1.5" PointX="7.375" PointY="3.75" />
+        <AssociationConnector Association="EOCMDataModel.FK_dbo_Clusters_dbo_Districts_District_ID" />
+        <AssociationConnector Association="EOCMDataModel.FK_dbo_Clusters_dbo_Villages_Village_ID" />
+        <AssociationConnector Association="EOCMDataModel.FK_dbo_Clusters_dbo_ClusterNatures_ClusterNature_ID" />
+        <AssociationConnector Association="EOCMDataModel.FK_dbo_Clusters_dbo_ClusterTypes_ClusterType_ID" />
+        <AssociationConnector Association="EOCMDataModel.FK_dbo_Clusters_dbo_ExportFlags_ExportFlag_ID" />
+        <AssociationConnector Association="EOCMDataModel.FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID" />
+        <AssociationConnector Association="EOCMDataModel.FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID" />
+        <AssociationConnector Association="EOCMDataModel.FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -39,5 +39,6 @@ namespace EgyptOCM.Models
         public virtual DbSet<ProductSeason> ProductSeasons { get; set; }
         public virtual DbSet<Sector> Sectors { get; set; }
         public virtual DbSet<Village> Villages { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
