@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 
 namespace EgyptOCM.Controllers
 {
+     [Authorize]
     public class HomeController : Controller
     {
         private EgyptOCM.Models.EOCMDataEntities db = new EgyptOCM.Models.EOCMDataEntities();
