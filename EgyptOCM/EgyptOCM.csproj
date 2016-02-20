@@ -387,7 +387,6 @@
       <DependentUpon>EgyptOCM.edmx</DependentUpon>
       <LastGenOutput>EgyptOCM.cs</LastGenOutput>
     </Content>
-    <None Include="Properties\PublishProfiles\EgyptOCM %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\EgyptOCM.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables-1.10.6\extensions\TableTools\swf\copy_csv_xls.swf" />

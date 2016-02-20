@@ -106,10 +106,52 @@ function GetMap(myArray) {
             showGovtLayer();
 
         }
+    }
+        if (num=0 && map!=null) {
+            lastZoomLevel = map.getZoom();
+            Microsoft.Maps.Events.addHandler(map, 'viewchangeend', viewChanged);
+
+            govtLayer = new Microsoft.Maps.EntityCollection();
+            map.entities.push(govtLayer);
+
+            var govtTooltipLayer = new Microsoft.Maps.EntityCollection();
+            map.entities.push(govtTooltipLayer);
+
+            govtTooltip = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 210, height: 160, offset: new Microsoft.Maps.Point(-120, 35) });
+
+            govtTooltipLayer.push(govtTooltip);
+            AddGovtLocations();
+
+            clusterLayer = new Microsoft.Maps.EntityCollection();
+            map.entities.push(clusterLayer);
+
+            var clusterInfoBoxLayer = new Microsoft.Maps.EntityCollection();
+            map.entities.push(clusterInfoBoxLayer);
+
+            clusterTooltip = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 200, height: 150, offset: new Microsoft.Maps.Point(-100, 35) });
+            clusterInfoBoxLayer.push(clusterTooltip);
+
+            //clusterInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 200, offset: new Microsoft.Maps.Point(-100, 15) });
+            //clusterInfoBoxLayer.push(clusterInfobox);
+
+            CreateGovtLayer();
+
+            createClusterLayer(0);
+
+            if (zoomLevel > 8) {
+
+                showClusterLayer();
+
+            }
+            else {
+
+                showGovtLayer();
+
+            }
+
+        }
 
     }
-
-}
 
 function showGovtLayer() {
     for (i = 0; i < 27; i++) {
