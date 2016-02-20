@@ -39,14 +39,16 @@ function GetMap(myArray) {
 
     computeMapCenterZoom(0);
 
+    //mapcLat = 30.1;
+    //mapcLon = 31.26;
+    //zoomLevel = 7;
+
     try {
-        //Microsoft.Maps.loadModule('Microsoft.Maps.Themes.BingTheme', {
-        //    callback: function () {
+       
 
         map = new Microsoft.Maps.Map(document.getElementById("myMap"),
                {
                    credentials: "ApsJjM2R2v3U-bnatAF3H0IY4cbas9KnKtIwKzOsLVICG3kqmJaDUZEh_8J-RzR7",
-                   //theme: new Microsoft.Maps.Themes.BingTheme(),
                    center: new Microsoft.Maps.Location(mapclat, mapclon),
                    mapTypeId: Microsoft.Maps.MapTypeId.road,
                    zoom: zoomLevel,
@@ -55,16 +57,16 @@ function GetMap(myArray) {
                    height: mapHeight
                });
     }
-    //}
-    //       )}
-
+   
     catch (e) {
         alert("الخريطة غير متاحة الان - حاول لاحقا");
     }
 
+    if (num == 0 && map != null) {
+        map.setView({ center: new Microsoft.Maps.Location(30.1, 31.26), zoom: 7 });
+    }
 
-
-    if (num > 0 && map != null) {
+    if ( num>0 && map != null) {
 
         lastZoomLevel = map.getZoom();
         Microsoft.Maps.Events.addHandler(map, 'viewchangeend', viewChanged);
@@ -107,50 +109,8 @@ function GetMap(myArray) {
 
         }
     }
-        if (num=0 && map!=null) {
-            lastZoomLevel = map.getZoom();
-            Microsoft.Maps.Events.addHandler(map, 'viewchangeend', viewChanged);
-
-            govtLayer = new Microsoft.Maps.EntityCollection();
-            map.entities.push(govtLayer);
-
-            var govtTooltipLayer = new Microsoft.Maps.EntityCollection();
-            map.entities.push(govtTooltipLayer);
-
-            govtTooltip = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 210, height: 160, offset: new Microsoft.Maps.Point(-120, 35) });
-
-            govtTooltipLayer.push(govtTooltip);
-            AddGovtLocations();
-
-            clusterLayer = new Microsoft.Maps.EntityCollection();
-            map.entities.push(clusterLayer);
-
-            var clusterInfoBoxLayer = new Microsoft.Maps.EntityCollection();
-            map.entities.push(clusterInfoBoxLayer);
-
-            clusterTooltip = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 200, height: 150, offset: new Microsoft.Maps.Point(-100, 35) });
-            clusterInfoBoxLayer.push(clusterTooltip);
-
-            //clusterInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 200, offset: new Microsoft.Maps.Point(-100, 15) });
-            //clusterInfoBoxLayer.push(clusterInfobox);
-
-            CreateGovtLayer();
-
-            createClusterLayer(0);
-
-            if (zoomLevel > 8) {
-
-                showClusterLayer();
-
-            }
-            else {
-
-                showGovtLayer();
-
-            }
-
-        }
-
+        
+    
     }
 
 function showGovtLayer() {
