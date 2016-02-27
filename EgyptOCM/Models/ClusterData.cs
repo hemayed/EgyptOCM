@@ -65,5 +65,9 @@ namespace EgyptOCM.Models
         public string Cluster_DetailPage2 { get; set; }
         public string Cluster_DetailPage3 { get; set; }
 
+        public string Cluster_DetailPage1_Title { get; set; }
+        public string Cluster_DetailPage2_Title { get; set; }
+        public string Cluster_DetailPage3_Title { get; set; }
+
     }
 }

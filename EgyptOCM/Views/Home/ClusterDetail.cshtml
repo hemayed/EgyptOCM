@@ -200,14 +200,14 @@
         @if ((@Model.Cluster_DetailPage1 != "" && @Model.Cluster_DetailPage1 != null) || (@Model.Cluster_DetailPage2 != "" && @Model.Cluster_DetailPage2 != null) || (@Model.Cluster_DetailPage3 != "" && @Model.Cluster_DetailPage3 != null))
         {
             <td>روابط لصفحات خارجية ذات صلة:</td>
-            <td style="text-align:left">
+            <td style="text-align:right">
                 <br />
-                <a href="@Html.Raw(Model.Cluster_DetailPage1)">@Html.DisplayFor(model => model.Cluster_DetailPage1)</a>
-                <br /><br />
+                <a href="@Html.Raw(Model.Cluster_DetailPage1)">@Html.DisplayFor(model => model.Cluster_DetailPage1_Title)</a>
+                <br />
 
-                <a target="_blank" href="@Html.Raw(Model.Cluster_DetailPage2)">@Html.DisplayFor(model => model.Cluster_DetailPage2)</a>
-                <br /><br />
-                <a target="_blank" href="@Html.Raw(Model.Cluster_DetailPage3)">@Html.DisplayFor(model => model.Cluster_DetailPage3)</a>
+                <a target="_blank" href="@Html.Raw(Model.Cluster_DetailPage2)">@Html.DisplayFor(model => model.Cluster_DetailPage2_Title)</a>
+                <br />
+                <a target="_blank" href="@Html.Raw(Model.Cluster_DetailPage3)">@Html.DisplayFor(model => model.Cluster_DetailPage3_Title)</a>
             </td>
         }
 

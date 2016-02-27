@@ -58,6 +58,9 @@ namespace EgyptOCM.Models
         public string IncomeLevel_ID { get; set; }
         public string Income { get; set; }
         public string AdditionalInfo { get; set; }
+        public string Cluster_DetailPage1_Title { get; set; }
+        public string Cluster_DetailPage2_Title { get; set; }
+        public string Cluster_DetailPage3_Title { get; set; }
     
         public virtual Field Field { get; set; }
         public virtual Governorate Governorate { get; set; }

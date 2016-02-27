@@ -81,7 +81,7 @@ namespace EgyptOCM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Cluster_Name,Govt_ID,District_ID,Village_ID,Sector_ID,Field_ID,Product_ID,Cluster_Lat,Cluster_Long,Cluster_EmpNumMin,Cluster_EmpFemale,Cluster_ShopNumMin,Cluster_ProductImage,Cluster_ProcessImage,Cluster_DetailPage1,Cluster_DetailPage2,Cluster_DetailPage3,ClusterNature_ID,ClusterType_ID,NonOfficalProjects,OfficalProjects,Products,MoreProducts,Address,Challenges,MoreChallenges,SupportingOrg,Cluster_StudyFile1,Cluster_StudyFile2,CompanyPercent1,CompanyPercent2,CompanyPercent3,CompanyPercent4,MarketType_ID,ProductSeason_ID,ProductSeasonDetail,ExportFlag_ID,ExportVolume,Income,IncomeLevel_ID,AdditionalInfo")] Cluster cluster)
+        public ActionResult Create([Bind(Include = "Cluster_Name,Govt_ID,District_ID,Village_ID,Sector_ID,Field_ID,Product_ID,Cluster_Lat,Cluster_Long,Cluster_EmpNumMin,Cluster_EmpFemale,Cluster_ShopNumMin,Cluster_ProductImage,Cluster_ProcessImage,Cluster_DetailPage1,Cluster_DetailPage2,Cluster_DetailPage3,Cluster_DetailPage1_Title,Cluster_DetailPage2_Title,Cluster_DetailPage3_Title,ClusterNature_ID,ClusterType_ID,NonOfficalProjects,OfficalProjects,Products,MoreProducts,Address,Challenges,MoreChallenges,SupportingOrg,Cluster_StudyFile1,Cluster_StudyFile2,CompanyPercent1,CompanyPercent2,CompanyPercent3,CompanyPercent4,MarketType_ID,ProductSeason_ID,ProductSeasonDetail,ExportFlag_ID,ExportVolume,Income,IncomeLevel_ID,AdditionalInfo")] Cluster cluster)
         {
             var clustername = (from d in db.Clusters where (d.Cluster_Lat.Equals(cluster.Cluster_Lat) && d.Cluster_Long.Equals(cluster.Cluster_Long)) select d.Cluster_Name).ToList();
 
@@ -215,7 +215,7 @@ namespace EgyptOCM.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit([Bind(Include = "Cluster_ID,Cluster_Name,Govt_ID,District_ID,Village_ID,Sector_ID,Field_ID,Product_ID,Cluster_Lat,Cluster_Long,Cluster_EmpNumMin,Cluster_EmpFemale,Cluster_ShopNumMin,Cluster_ProductImage,Cluster_ProcessImage,Cluster_DetailPage1,Cluster_DetailPage2,Cluster_DetailPage3,ClusterNature_ID,ClusterType_ID,NonOfficalProjects,OfficalProjects,Products,MoreProducts,Address,Challenges,MoreChallenges,SupportingOrg,Cluster_StudyFile1,Cluster_StudyFile2,CompanyPercent1,CompanyPercent2,CompanyPercent3,CompanyPercent4,MarketType_ID,ProductSeason_ID,ProductSeasonDetail,ExportFlag_ID,ExportVolume,Income,IncomeLevel_ID,AdditionalInfo")] Cluster cluster)
+        public ActionResult Edit([Bind(Include = "Cluster_ID,Cluster_Name,Govt_ID,District_ID,Village_ID,Sector_ID,Field_ID,Product_ID,Cluster_Lat,Cluster_Long,Cluster_EmpNumMin,Cluster_EmpFemale,Cluster_ShopNumMin,Cluster_ProductImage,Cluster_ProcessImage,Cluster_DetailPage1,Cluster_DetailPage2,Cluster_DetailPage3,Cluster_DetailPage1_Title,Cluster_DetailPage2_Title,Cluster_DetailPage3_Title,ClusterNature_ID,ClusterType_ID,NonOfficalProjects,OfficalProjects,Products,MoreProducts,Address,Challenges,MoreChallenges,SupportingOrg,Cluster_StudyFile1,Cluster_StudyFile2,CompanyPercent1,CompanyPercent2,CompanyPercent3,CompanyPercent4,MarketType_ID,ProductSeason_ID,ProductSeasonDetail,ExportFlag_ID,ExportVolume,Income,IncomeLevel_ID,AdditionalInfo")] Cluster cluster)
         {
 
             string sourceName;
@@ -241,6 +241,10 @@ namespace EgyptOCM.Controllers
                     myCluster.Cluster_DetailPage1 = cluster.Cluster_DetailPage1;
                     myCluster.Cluster_DetailPage2 = cluster.Cluster_DetailPage2;
                     myCluster.Cluster_DetailPage3 = cluster.Cluster_DetailPage3;
+
+                    myCluster.Cluster_DetailPage1_Title = cluster.Cluster_DetailPage1_Title;
+                    myCluster.Cluster_DetailPage2_Title = cluster.Cluster_DetailPage2_Title;
+                    myCluster.Cluster_DetailPage3_Title = cluster.Cluster_DetailPage3_Title;
 
                     myCluster.Govt_ID = cluster.Govt_ID;
                     myCluster.District_ID = cluster.District_ID;

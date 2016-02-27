@@ -310,6 +310,20 @@ namespace EgyptOCM.Models
         [DataType(DataType.MultilineText)]
         [Display(Name = " بيانات إضافية عن التجمع ")]
         public string AdditionalInfo;
+
+        [Display(Name = "عنوان رابط 1")]
+        [StringLength(1024)]
+        public string Cluster_DetailPage1_Title;
+
+        [Display(Name = "عنوان رابط 2")]
+        [StringLength(1024)]
+        public string Cluster_DetailPage2_Title;
+
+        [Display(Name = "عنوان رابط 3")]
+        [StringLength(1024)]
+        public string Cluster_DetailPage3_Title;
+
+
     }
 
     public class ClusterNatureMetaData

@@ -70,6 +70,9 @@
           <Property Name="IncomeLevel_ID" Type="nvarchar" MaxLength="10" />
           <Property Name="Income" Type="nvarchar" MaxLength="255" />
           <Property Name="AdditionalInfo" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_DetailPage1_Title" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_DetailPage2_Title" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_DetailPage3_Title" Type="nvarchar" MaxLength="1024" />
         </EntityType>
         <EntityType Name="ClusterTypes">
           <Key>
@@ -553,6 +556,9 @@
           <NavigationProperty Name="IncomeLevel" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_IncomeLevels_IncomeLevel_ID" FromRole="Cluster" ToRole="IncomeLevel" />
           <NavigationProperty Name="MarketType" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_MarketTypes_MarketType_ID" FromRole="Cluster" ToRole="MarketType" />
           <NavigationProperty Name="ProductSeason" Relationship="EOCMDataModel.FK_dbo_Clusters_dbo_ProductSeasons_ProductSeason_ID" FromRole="Cluster" ToRole="ProductSeason" />
+          <Property Name="Cluster_DetailPage1_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_DetailPage2_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_DetailPage3_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ClusterType">
           <Key>
@@ -1004,6 +1010,9 @@
           <EntitySetMapping Name="Clusters">
             <EntityTypeMapping TypeName="EOCMDataModel.Cluster">
               <MappingFragment StoreEntitySet="Clusters">
+                <ScalarProperty Name="Cluster_DetailPage3_Title" ColumnName="Cluster_DetailPage3_Title" />
+                <ScalarProperty Name="Cluster_DetailPage2_Title" ColumnName="Cluster_DetailPage2_Title" />
+                <ScalarProperty Name="Cluster_DetailPage1_Title" ColumnName="Cluster_DetailPage1_Title" />
                 <ScalarProperty Name="Cluster_ID" ColumnName="Cluster_ID" />
                 <ScalarProperty Name="Cluster_Name" ColumnName="Cluster_Name" />
                 <ScalarProperty Name="Govt_ID" ColumnName="Govt_ID" />
