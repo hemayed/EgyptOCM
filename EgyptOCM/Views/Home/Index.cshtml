@@ -39,8 +39,8 @@
                 @Html.DropDownList("Sector_ID", null, "كل القطاعات", htmlAttributes: new { @class = "form-control" })
                 @Html.LabelFor(model => model.Field_ID, null, htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("Field_ID", null, "كل الانشطة", htmlAttributes: new { @class = "form-control" })
-                @Html.LabelFor(model => model.Product_ID, null, htmlAttributes: new { @class = "control-label " })
-                @Html.DropDownList("Product_ID", null, "كل المنتجات", htmlAttributes: new { @class = "form-control" })
+                @*@Html.LabelFor(model => model.Product_ID, null, htmlAttributes: new { @class = "control-label " })
+                @Html.DropDownList("Product_ID", null, "كل المنتجات", htmlAttributes: new { @class = "form-control" })*@
                 @Html.LabelFor(model => model.Govt_ID, null, htmlAttributes: new { @class = "control-label" })
                 @Html.DropDownList("Govt_ID", null, "كل المحافظات", htmlAttributes: new { @class = "form-control" })
                 @Html.LabelFor(model => model.District_ID, null, htmlAttributes: new { @class = "control-label" })
@@ -126,16 +126,16 @@
 
         $('#District_ID').prop("disabled", true);
         $('#Field_ID').prop("disabled", true);
-        $('#Product_ID').prop("disabled", true);
+        //$('#Product_ID').prop("disabled", true);
 
-        UpdateViews($('#Govt_ID').val(), $('#District_ID').val(), $('#Sector_ID').val(), $('#Field_ID').val(), $('#Product_ID').val());
+        UpdateViews($('#Govt_ID').val(), $('#District_ID').val(), $('#Sector_ID').val(), $('#Field_ID').val());
 
         $('#SubmitSimple1').click(function () {
-            UpdateViews($('#Govt_ID').val(), $('#District_ID').val(), $('#Sector_ID').val(), $('#Field_ID').val(), $('#Product_ID').val());
+            UpdateViews($('#Govt_ID').val(), $('#District_ID').val(), $('#Sector_ID').val(), $('#Field_ID').val());
         });
 
         $('#SubmitAdvanced1').click(function () {
-            UpdateViews2($('#Govt_ID').val(), $('#District_ID').val(), $('#Sector_ID').val(), $('#Field_ID').val(), $('#Product_ID').val(),$('#ClusterNature_ID').val(),$('#ClusterType_ID').val(),$('#IncomeLevel_ID').val(),$('#ExportFlag_ID').val(),$('#ProductSeason_ID').val());
+            UpdateViews2($('#Govt_ID').val(), $('#District_ID').val(), $('#Sector_ID').val(), $('#Field_ID').val(),$('#ClusterNature_ID').val(),$('#ClusterType_ID').val(),$('#IncomeLevel_ID').val(),$('#ExportFlag_ID').val(),$('#ProductSeason_ID').val());
         });
 
         $('#Govt_ID').change(function () {
@@ -147,9 +147,9 @@
             UpdateFields($('#Sector_ID'), $('#Field_ID'),$('#Product_ID'),"كل الانشطة")
         });
 
-        $('#Field_ID').change(function () {
-            UpdateProducts($('#Field_ID'), $('#Product_ID'),"كل المنتجات")
-        });
+        //$('#Field_ID').change(function () {
+        //    UpdateProducts($('#Field_ID'), $('#Product_ID'),"كل المنتجات")
+        //});
 
 
     });

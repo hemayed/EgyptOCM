@@ -49,7 +49,7 @@ namespace EgyptOCM.Controllers
             ViewBag.District_ID = new SelectList(db.Districts, "District_ID", "District_Name");
             ViewBag.Field_ID = new SelectList(db.Fields, "Field_ID", "Field_Name");
             ViewBag.Govt_ID = new SelectList(db.Governorates, "Govt_ID", "Govt_Name");
-            ViewBag.Product_ID = new SelectList(db.Products, "Product_ID", "Product_Name");
+            //ViewBag.Product_ID = new SelectList(db.Products, "Product_ID", "Product_Name");
             ViewBag.Sector_ID = new SelectList(db.Sectors, "Sector_ID", "Sector_Name");
 
             ViewBag.ProductSeason_ID = new SelectList(db.ProductSeasons, "ProductSeason_ID", "ProductSeason_Name");
@@ -125,7 +125,7 @@ namespace EgyptOCM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var clusters = (from d in db.Clusters orderby d.Cluster_Name ascending where d.Product_ID == id select d).ToList();
+            var clusters = (from d in db.Clusters orderby d.Cluster_Name ascending where d.Field_ID == id select d).ToList();
 
             if (clusters == null)
             {
@@ -182,7 +182,7 @@ namespace EgyptOCM.Controllers
             if (District_ID != "0" && District_ID != "") { clusters = (from d in clusters orderby d.Govt_ID, d.Cluster_Name ascending where d.District_ID == District_ID select d).ToList(); }
             if (Sector_ID != "") { clusters = (from d in clusters orderby d.Govt_ID, d.Cluster_Name ascending where d.Sector_ID == Sector_ID select d).ToList(); }
             if (Field_ID != "0" && Field_ID != "") { clusters = (from d in clusters orderby d.Govt_ID, d.Cluster_Name ascending where d.Field_ID == Field_ID select d).ToList(); }
-            if (Product_ID != "0" && Product_ID != "") { clusters = (from d in clusters orderby d.Govt_ID, d.Cluster_Name ascending where d.Product_ID == Product_ID select d).ToList(); }
+           // if (Product_ID != "0" && Product_ID != "") { clusters = (from d in clusters orderby d.Govt_ID, d.Cluster_Name ascending where d.Product_ID == Product_ID select d).ToList(); }
             if (ClusterNature_ID != null && ClusterNature_ID != "") { clusters = (from d in clusters orderby d.Govt_ID, d.Cluster_Name ascending where d.ClusterNature_ID == ClusterNature_ID select d).ToList(); }
             if (ClusterType_ID != null && ClusterType_ID != "") { clusters = (from d in clusters orderby d.Govt_ID, d.Cluster_Name ascending where d.ClusterType_ID == ClusterType_ID select d).ToList(); }
             if (IncomeLevel_ID != null && IncomeLevel_ID != "") { clusters = (from d in clusters orderby d.Govt_ID, d.Cluster_Name ascending where d.IncomeLevel_ID == IncomeLevel_ID select d).ToList(); }
