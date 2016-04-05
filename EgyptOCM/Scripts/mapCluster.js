@@ -19,6 +19,7 @@ var lastZoomLevel;
 
 var clusterData;
 var govtData;
+var clickedGovtID;
 
 var Zoom = {
     MAX: 10,
@@ -134,7 +135,15 @@ function showClusterLayer() {
         }
     }
     for (i = 0; i < num; i++) {
-        clusterpin[i].setOptions({ visible: true });
+        if (clusterData[i].Govt_ID == clickedGovtID){
+            clusterpin[i].setOptions({ visible: true });
+        }
+        else{
+
+        clusterpin[i].setOptions({ visible: false });
+        }
+
+     //clusterpin[i].setOptions({ visible: true });
     }
 }
 
@@ -316,6 +325,9 @@ function createClusterLayer(e) {
 
     if (e.targetType == 'pushpin') {
         govtID = e.target.getTypeName().match(/\d+$/)[0];
+
+        clickedGovtID = govtID;
+
         for (i = 0; i < 27; i++) {
             if (govtData[i].Cluster_Num != 0) {
                 govtpin[i].setOptions({ visible: false });
@@ -336,6 +348,7 @@ function createClusterLayer(e) {
 
         if (clusterData[i].Govt_ID == govtID || govtID == 0) {
 
+            
             var pintxt = String(i + 1);
 
             switch (clusterData[i].Sector_ID) {
@@ -391,6 +404,8 @@ function createClusterLayer(e) {
 
 
             clusterLayer.push(clusterpin[i]);
+           
+
 
         }
 
