@@ -19,7 +19,7 @@ var lastZoomLevel;
 
 var clusterData;
 var govtData;
-var clickedGovtID;
+var clickedGovtID=0;
 
 var Zoom = {
     MAX: 10,
@@ -135,7 +135,7 @@ function showClusterLayer() {
         }
     }
     for (i = 0; i < num; i++) {
-        if (clusterData[i].Govt_ID == clickedGovtID){
+        if (clusterData[i].Govt_ID == clickedGovtID || clickedGovtID==0){
             clusterpin[i].setOptions({ visible: true });
         }
         else{
