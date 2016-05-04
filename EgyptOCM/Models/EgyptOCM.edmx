@@ -41,15 +41,15 @@
           <Property Name="Cluster_Long" Type="decimal" Precision="10" Scale="6" Nullable="false" />
           <Property Name="Cluster_EmpNumMin" Type="int" Nullable="false" />
           <Property Name="Cluster_EmpNumMax" Type="int" Nullable="false" />
-          <Property Name="Cluster_EmpFemale" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Cluster_EmpFemale" Type="float" />
           <Property Name="Cluster_ShopNumMin" Type="int" Nullable="false" />
           <Property Name="Cluster_ShopNumMax" Type="int" Nullable="false" />
-          <Property Name="OfficalProjects" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="NonOfficalProjects" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="CompanyPercent1" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="CompanyPercent2" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="CompanyPercent3" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="CompanyPercent4" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="OfficalProjects" Type="float" />
+          <Property Name="NonOfficalProjects" Type="float" />
+          <Property Name="CompanyPercent1" Type="float" />
+          <Property Name="CompanyPercent2" Type="float" />
+          <Property Name="CompanyPercent3" Type="float" />
+          <Property Name="CompanyPercent4" Type="float" />
           <Property Name="ClusterNature_ID" Type="nvarchar" MaxLength="10" />
           <Property Name="ClusterType_ID" Type="nvarchar" MaxLength="10" />
           <Property Name="SupportingOrg" Type="nvarchar" MaxLength="1024" />
@@ -73,6 +73,14 @@
           <Property Name="Cluster_DetailPage1_Title" Type="nvarchar" MaxLength="1024" />
           <Property Name="Cluster_DetailPage2_Title" Type="nvarchar" MaxLength="1024" />
           <Property Name="Cluster_DetailPage3_Title" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_StudyFile3" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_StudyFile4" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_StudyFile5" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_StudyFile1_Title" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_StudyFile2_Title" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_StudyFile3_Title" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_StudyFile4_Title" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Cluster_StudyFile5_Title" Type="nvarchar" MaxLength="1024" />
         </EntityType>
         <EntityType Name="ClusterTypes">
           <Key>
@@ -515,15 +523,15 @@
           <Property Name="Cluster_Long" Type="Decimal" Precision="10" Scale="6" Nullable="false" />
           <Property Name="Cluster_EmpNumMin" Type="Int32" Nullable="false" />
           <Property Name="Cluster_EmpNumMax" Type="Int32" Nullable="false" />
-          <Property Name="Cluster_EmpFemale" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Cluster_EmpFemale" Type="Double" />
           <Property Name="Cluster_ShopNumMin" Type="Int32" Nullable="false" />
           <Property Name="Cluster_ShopNumMax" Type="Int32" Nullable="false" />
-          <Property Name="OfficalProjects" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="NonOfficalProjects" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="CompanyPercent1" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="CompanyPercent2" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="CompanyPercent3" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="CompanyPercent4" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="OfficalProjects" Type="Double" />
+          <Property Name="NonOfficalProjects" Type="Double" />
+          <Property Name="CompanyPercent1" Type="Double" />
+          <Property Name="CompanyPercent2" Type="Double" />
+          <Property Name="CompanyPercent3" Type="Double" />
+          <Property Name="CompanyPercent4" Type="Double" />
           <Property Name="ClusterNature_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ClusterType_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SupportingOrg" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
@@ -559,6 +567,14 @@
           <Property Name="Cluster_DetailPage1_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="Cluster_DetailPage2_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="Cluster_DetailPage3_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_StudyFile3" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_StudyFile4" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_StudyFile5" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_StudyFile1_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_StudyFile2_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_StudyFile3_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_StudyFile4_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Cluster_StudyFile5_Title" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ClusterType">
           <Key>
@@ -1010,6 +1026,14 @@
           <EntitySetMapping Name="Clusters">
             <EntityTypeMapping TypeName="EOCMDataModel.Cluster">
               <MappingFragment StoreEntitySet="Clusters">
+                <ScalarProperty Name="Cluster_StudyFile5_Title" ColumnName="Cluster_StudyFile5_Title" />
+                <ScalarProperty Name="Cluster_StudyFile4_Title" ColumnName="Cluster_StudyFile4_Title" />
+                <ScalarProperty Name="Cluster_StudyFile3_Title" ColumnName="Cluster_StudyFile3_Title" />
+                <ScalarProperty Name="Cluster_StudyFile2_Title" ColumnName="Cluster_StudyFile2_Title" />
+                <ScalarProperty Name="Cluster_StudyFile1_Title" ColumnName="Cluster_StudyFile1_Title" />
+                <ScalarProperty Name="Cluster_StudyFile5" ColumnName="Cluster_StudyFile5" />
+                <ScalarProperty Name="Cluster_StudyFile4" ColumnName="Cluster_StudyFile4" />
+                <ScalarProperty Name="Cluster_StudyFile3" ColumnName="Cluster_StudyFile3" />
                 <ScalarProperty Name="Cluster_DetailPage3_Title" ColumnName="Cluster_DetailPage3_Title" />
                 <ScalarProperty Name="Cluster_DetailPage2_Title" ColumnName="Cluster_DetailPage2_Title" />
                 <ScalarProperty Name="Cluster_DetailPage1_Title" ColumnName="Cluster_DetailPage1_Title" />

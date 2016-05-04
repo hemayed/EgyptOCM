@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="EOCMDataModel.ClusterNature" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.Cluster" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.ClusterType" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EOCMDataModel.District" Width="1.5" PointX="5.375" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EOCMDataModel.District" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.ExportFlag" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.Field" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EOCMDataModel.Governorate" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />

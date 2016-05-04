@@ -164,10 +164,10 @@ namespace EgyptOCM.Models
         [Display(Name = "  عدد العاملين -الحد الاعلى")]
         public int Cluster_EmpNumMax;
 
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P0}")]
-        [Range(0, 1, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
+        [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
         [Display(Name = "نسبة عمالة المرأة ")]
-        public decimal? Cluster_EmpFemale;
+        public double? Cluster_EmpFemale;
 
         [Required]
         [DefaultValue(0)]
@@ -181,35 +181,35 @@ namespace EgyptOCM.Models
         [Display(Name = "عدد الوحدات الانتاجية - الحد الاعلى")]
         public int Cluster_ShopNumMax;
 
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P0}")]
-        [Range(0, 1, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
+        [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
         [Display(Name = "نسبة المشاريع الرسمية في التجمع ")]
-        public decimal? OfficalProjects;
+        public double? OfficalProjects;
 
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P0}")]
-        [Range(0, 1, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
+        [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
         [Display(Name = "نسبة المشاريع الغير رسمية في التجمع ")]
-        public decimal? NonOfficalProjects;
+        public double? NonOfficalProjects;
 
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P0}")]
-        [Range(0, 1, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
+        [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
         [Display(Name = "نسبة الشركات المتناهية الصغر (أى عدد العمالة من 1 إلى 4) ")]
-        public decimal? CompanyPercent1;
+        public double? CompanyPercent1;
 
- [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P0}")]
- [Range(0, 1, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
+ [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
+ [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
  [Display(Name = "نسبة الشركات الصغيرة (أى عدد العمالة من 5 إلى 49) ")]
- public decimal? CompanyPercent2;
+        public double? CompanyPercent2;
 
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P0}")]
-        [Range(0, 1, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
+        [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
         [Display(Name = "نسبة الشركات المتوسطة (أى عدد العمالة من 50 إلى 99) ")]
-        public decimal? CompanyPercent3;
+ public double? CompanyPercent3;
 
-          [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P0}")]
-          [Range(0, 1, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
+          [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
+          [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
           [Display(Name = "نسبة الشركات الكبيرة (أى عدد العمالة أكثر من 100) ")]
-          public decimal? CompanyPercent4;
+        public double? CompanyPercent4;
 
 
            [StringLength(10)]
@@ -255,8 +255,23 @@ namespace EgyptOCM.Models
 
          [StringLength(1024)]
          [DataType(DataType.Upload)]
-         [Display(Name = "معلومات اضافية عن التجمع ")]
+         [Display(Name = "دراسة 2 ")]
          public string Cluster_StudyFile2;
+
+         [StringLength(1024)]
+         [DataType(DataType.Upload)]
+         [Display(Name = "دراسة 3 ")]
+         public string Cluster_StudyFile3;
+
+         [StringLength(1024)]
+         [DataType(DataType.Upload)]
+         [Display(Name = "دراسة 4 ")]
+         public string Cluster_StudyFile4;
+
+         [StringLength(1024)]
+         [DataType(DataType.Upload)]
+         [Display(Name = "دراسة 5 ")]
+         public string Cluster_StudyFile5;
 
          [StringLength(1024)]
          [DataType(DataType.Url)]
@@ -322,6 +337,26 @@ namespace EgyptOCM.Models
         [Display(Name = "عنوان رابط 3")]
         [StringLength(1024)]
         public string Cluster_DetailPage3_Title;
+
+        [Display(Name = "عنوان الدراسة 1")]
+        [StringLength(1024)]
+        public string Cluster_StudyFile1_Title;
+
+        [Display(Name = "عنوان الدراسة 2")]
+        [StringLength(1024)]
+        public string Cluster_StudyFile2_Title;
+
+        [Display(Name = "عنوان الدراسة 3")]
+        [StringLength(1024)]
+        public string Cluster_StudyFile3_Title;
+
+        [Display(Name = "عنوان الدراسة 4")]
+        [StringLength(1024)]
+        public string Cluster_StudyFile4_Title;
+
+        [Display(Name = "عنوان الدراسة 5")]
+        [StringLength(1024)]
+        public string Cluster_StudyFile5_Title;
 
 
     }

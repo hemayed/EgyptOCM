@@ -81,7 +81,7 @@ namespace EgyptOCM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Cluster_Name,Govt_ID,District_ID,Village_ID,Sector_ID,Field_ID,Product_ID,Cluster_Lat,Cluster_Long,Cluster_EmpNumMin,Cluster_EmpFemale,Cluster_ShopNumMin,Cluster_ProductImage,Cluster_ProcessImage,Cluster_DetailPage1,Cluster_DetailPage2,Cluster_DetailPage3,Cluster_DetailPage1_Title,Cluster_DetailPage2_Title,Cluster_DetailPage3_Title,ClusterNature_ID,ClusterType_ID,NonOfficalProjects,OfficalProjects,Products,MoreProducts,Address,Challenges,MoreChallenges,SupportingOrg,Cluster_StudyFile1,Cluster_StudyFile2,CompanyPercent1,CompanyPercent2,CompanyPercent3,CompanyPercent4,MarketType_ID,ProductSeason_ID,ProductSeasonDetail,ExportFlag_ID,ExportVolume,Income,IncomeLevel_ID,AdditionalInfo")] Cluster cluster)
+        public ActionResult Create([Bind(Include = "Cluster_Name,Govt_ID,District_ID,Village_ID,Sector_ID,Field_ID,Product_ID,Cluster_Lat,Cluster_Long,Cluster_EmpNumMin,Cluster_EmpFemale,Cluster_ShopNumMin,Cluster_ProductImage,Cluster_ProcessImage,Cluster_DetailPage1,Cluster_DetailPage2,Cluster_DetailPage3,Cluster_DetailPage1_Title,Cluster_DetailPage2_Title,Cluster_DetailPage3_Title,ClusterNature_ID,ClusterType_ID,NonOfficalProjects,OfficalProjects,Products,MoreProducts,Address,Challenges,MoreChallenges,SupportingOrg,Cluster_StudyFile1,Cluster_StudyFile2,Cluster_StudyFile3,Cluster_StudyFile4,Cluster_StudyFile5,Cluster_StudyFile1_Title,Cluster_StudyFile2_Title,Cluster_StudyFile3_Title,Cluster_StudyFile4_Title,Cluster_StudyFile5_Title,CompanyPercent1,CompanyPercent2,CompanyPercent3,CompanyPercent4,MarketType_ID,ProductSeason_ID,ProductSeasonDetail,ExportFlag_ID,ExportVolume,Income,IncomeLevel_ID,AdditionalInfo")] Cluster cluster)
         {
             var clustername = (from d in db.Clusters where (d.Cluster_Lat.Equals(cluster.Cluster_Lat) && d.Cluster_Long.Equals(cluster.Cluster_Long)) select d.Cluster_Name).ToList();
 
@@ -128,6 +128,33 @@ namespace EgyptOCM.Controllers
                         Request.Files[1].SaveAs(destName);
                         cluster.Cluster_StudyFile2 = sourceName;
 
+                    }
+
+                    if (cluster.Cluster_StudyFile3 != null)
+                    {
+                        sourceName = Path.GetFileName(Request.Files[2].FileName);
+                        imgExt = System.IO.Path.GetExtension(sourceName);
+                        destName = Server.MapPath("~/StudyFiles/") + sourceName;
+                        Request.Files[2].SaveAs(destName);
+                        cluster.Cluster_StudyFile3 = sourceName;
+                    }
+
+                    if (cluster.Cluster_StudyFile4 != null)
+                    {
+                        sourceName = Path.GetFileName(Request.Files[3].FileName);
+                        imgExt = System.IO.Path.GetExtension(sourceName);
+                        destName = Server.MapPath("~/StudyFiles/") + sourceName;
+                        Request.Files[3].SaveAs(destName);
+                        cluster.Cluster_StudyFile4 = sourceName;
+                    }
+
+                    if (cluster.Cluster_StudyFile5 != null)
+                    {
+                        sourceName = Path.GetFileName(Request.Files[4].FileName);
+                        imgExt = System.IO.Path.GetExtension(sourceName);
+                        destName = Server.MapPath("~/StudyFiles/") + sourceName;
+                        Request.Files[4].SaveAs(destName);
+                        cluster.Cluster_StudyFile5 = sourceName;
                     }
                     if (cluster.Cluster_ProductImage != null)
                     {
@@ -215,7 +242,7 @@ namespace EgyptOCM.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Edit([Bind(Include = "Cluster_ID,Cluster_Name,Govt_ID,District_ID,Village_ID,Sector_ID,Field_ID,Product_ID,Cluster_Lat,Cluster_Long,Cluster_EmpNumMin,Cluster_EmpFemale,Cluster_ShopNumMin,Cluster_ProductImage,Cluster_ProcessImage,Cluster_DetailPage1,Cluster_DetailPage2,Cluster_DetailPage3,Cluster_DetailPage1_Title,Cluster_DetailPage2_Title,Cluster_DetailPage3_Title,ClusterNature_ID,ClusterType_ID,NonOfficalProjects,OfficalProjects,Products,MoreProducts,Address,Challenges,MoreChallenges,SupportingOrg,Cluster_StudyFile1,Cluster_StudyFile2,CompanyPercent1,CompanyPercent2,CompanyPercent3,CompanyPercent4,MarketType_ID,ProductSeason_ID,ProductSeasonDetail,ExportFlag_ID,ExportVolume,Income,IncomeLevel_ID,AdditionalInfo")] Cluster cluster)
+        public ActionResult Edit([Bind(Include = "Cluster_ID,Cluster_Name,Govt_ID,District_ID,Village_ID,Sector_ID,Field_ID,Product_ID,Cluster_Lat,Cluster_Long,Cluster_EmpNumMin,Cluster_EmpFemale,Cluster_ShopNumMin,Cluster_ProductImage,Cluster_ProcessImage,Cluster_DetailPage1,Cluster_DetailPage2,Cluster_DetailPage3,Cluster_DetailPage1_Title,Cluster_DetailPage2_Title,Cluster_DetailPage3_Title,ClusterNature_ID,ClusterType_ID,NonOfficalProjects,OfficalProjects,Products,MoreProducts,Address,Challenges,MoreChallenges,SupportingOrg,Cluster_StudyFile1,Cluster_StudyFile2,Cluster_StudyFile3,Cluster_StudyFile4,Cluster_StudyFile5,Cluster_StudyFile1_Title,Cluster_StudyFile2_Title,Cluster_StudyFile3_Title,Cluster_StudyFile4_Title,Cluster_StudyFile5_Title,CompanyPercent1,CompanyPercent2,CompanyPercent3,CompanyPercent4,MarketType_ID,ProductSeason_ID,ProductSeasonDetail,ExportFlag_ID,ExportVolume,Income,IncomeLevel_ID,AdditionalInfo")] Cluster cluster)
         {
 
             string sourceName;
@@ -245,6 +272,13 @@ namespace EgyptOCM.Controllers
                     myCluster.Cluster_DetailPage1_Title = cluster.Cluster_DetailPage1_Title;
                     myCluster.Cluster_DetailPage2_Title = cluster.Cluster_DetailPage2_Title;
                     myCluster.Cluster_DetailPage3_Title = cluster.Cluster_DetailPage3_Title;
+
+                    myCluster.Cluster_StudyFile1_Title = cluster.Cluster_StudyFile1_Title;
+                    myCluster.Cluster_StudyFile2_Title = cluster.Cluster_StudyFile2_Title;
+                    myCluster.Cluster_StudyFile3_Title = cluster.Cluster_StudyFile3_Title;
+                    myCluster.Cluster_StudyFile4_Title = cluster.Cluster_StudyFile4_Title;
+                    myCluster.Cluster_StudyFile5_Title = cluster.Cluster_StudyFile5_Title;
+
 
                     myCluster.Govt_ID = cluster.Govt_ID;
                     myCluster.District_ID = cluster.District_ID;
@@ -305,6 +339,34 @@ namespace EgyptOCM.Controllers
                         myCluster.Cluster_StudyFile2 = sourceName;
 
                     }
+
+                    if (cluster.Cluster_StudyFile3 != null)
+                    {
+                        sourceName = Path.GetFileName(Request.Files[2].FileName);
+                        imgExt = System.IO.Path.GetExtension(sourceName);
+                        destName = Server.MapPath("~/StudyFiles/") + sourceName;
+                        Request.Files[2].SaveAs(destName);
+                        cluster.Cluster_StudyFile3 = sourceName;
+                    }
+
+                    if (cluster.Cluster_StudyFile4 != null)
+                    {
+                        sourceName = Path.GetFileName(Request.Files[3].FileName);
+                        imgExt = System.IO.Path.GetExtension(sourceName);
+                        destName = Server.MapPath("~/StudyFiles/") + sourceName;
+                        Request.Files[3].SaveAs(destName);
+                        cluster.Cluster_StudyFile4 = sourceName;
+                    }
+
+                    if (cluster.Cluster_StudyFile5 != null)
+                    {
+                        sourceName = Path.GetFileName(Request.Files[4].FileName);
+                        imgExt = System.IO.Path.GetExtension(sourceName);
+                        destName = Server.MapPath("~/StudyFiles/") + sourceName;
+                        Request.Files[4].SaveAs(destName);
+                        cluster.Cluster_StudyFile5 = sourceName;
+                    }
+
 
                     if (cluster.Cluster_ProductImage != null)
                     {

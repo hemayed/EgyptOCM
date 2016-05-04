@@ -218,13 +218,20 @@
 
     <tr>
 
-        @if ((@Model.Cluster_StudyFile1 != "" && @Model.Cluster_StudyFile1 != null) || (@Model.Cluster_StudyFile2 != "" && @Model.Cluster_StudyFile2 != null))
+        @if ((@Model.Cluster_StudyFile1 != "" && @Model.Cluster_StudyFile1 != null) || (@Model.Cluster_StudyFile2 != "" && @Model.Cluster_StudyFile2 != null) || (@Model.Cluster_StudyFile3 != "" && @Model.Cluster_StudyFile3 != null) || (@Model.Cluster_StudyFile4 != "" && @Model.Cluster_StudyFile4 != null) || (@Model.Cluster_StudyFile5 != "" && @Model.Cluster_StudyFile5 != null))
         {
             <td>دراسة عن التجمع:</td>
             <td>
-                <a target="_blank" href="../../StudyFiles/@Html.Raw(Model.Cluster_StudyFile1)" style="text-align:left"> @Html.DisplayFor(model => model.Cluster_StudyFile1) </a>
+                <a target="_blank" href="../../StudyFiles/@Html.Raw(Model.Cluster_StudyFile1)" style="text-align:left"> @Html.DisplayFor(model => model.Cluster_StudyFile1_Title) </a>
                 <br />
-                <a target="_blank" href="../../StudyFiles/@Html.Raw(Model.Cluster_StudyFile2)" style="text-align:left">@Html.DisplayFor(model => model.Cluster_StudyFile2)</a>
+                <a target="_blank" href="../../StudyFiles/@Html.Raw(Model.Cluster_StudyFile2)" style="text-align:left">@Html.DisplayFor(model => model.Cluster_StudyFile2_Title)</a>
+                <br />
+                <a target="_blank" href="../../StudyFiles/@Html.Raw(Model.Cluster_StudyFile3)" style="text-align:left">@Html.DisplayFor(model => model.Cluster_StudyFile3_Title)</a>
+                <br />
+                <a target="_blank" href="../../StudyFiles/@Html.Raw(Model.Cluster_StudyFile4)" style="text-align:left">@Html.DisplayFor(model => model.Cluster_StudyFile4_Title)</a>
+                <br />
+                <a target="_blank" href="../../StudyFiles/@Html.Raw(Model.Cluster_StudyFile5)" style="text-align:left">@Html.DisplayFor(model => model.Cluster_StudyFile5_Title)</a>
+
             </td>
         }
     </tr>

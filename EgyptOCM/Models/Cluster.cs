@@ -29,15 +29,15 @@ namespace EgyptOCM.Models
         public decimal Cluster_Long { get; set; }
         public int Cluster_EmpNumMin { get; set; }
         public int Cluster_EmpNumMax { get; set; }
-        public Nullable<decimal> Cluster_EmpFemale { get; set; }
+        public Nullable<double> Cluster_EmpFemale { get; set; }
         public int Cluster_ShopNumMin { get; set; }
         public int Cluster_ShopNumMax { get; set; }
-        public Nullable<decimal> OfficalProjects { get; set; }
-        public Nullable<decimal> NonOfficalProjects { get; set; }
-        public Nullable<decimal> CompanyPercent1 { get; set; }
-        public Nullable<decimal> CompanyPercent2 { get; set; }
-        public Nullable<decimal> CompanyPercent3 { get; set; }
-        public Nullable<decimal> CompanyPercent4 { get; set; }
+        public Nullable<double> OfficalProjects { get; set; }
+        public Nullable<double> NonOfficalProjects { get; set; }
+        public Nullable<double> CompanyPercent1 { get; set; }
+        public Nullable<double> CompanyPercent2 { get; set; }
+        public Nullable<double> CompanyPercent3 { get; set; }
+        public Nullable<double> CompanyPercent4 { get; set; }
         public string ClusterNature_ID { get; set; }
         public string ClusterType_ID { get; set; }
         public string SupportingOrg { get; set; }
@@ -61,6 +61,14 @@ namespace EgyptOCM.Models
         public string Cluster_DetailPage1_Title { get; set; }
         public string Cluster_DetailPage2_Title { get; set; }
         public string Cluster_DetailPage3_Title { get; set; }
+        public string Cluster_StudyFile3 { get; set; }
+        public string Cluster_StudyFile4 { get; set; }
+        public string Cluster_StudyFile5 { get; set; }
+        public string Cluster_StudyFile1_Title { get; set; }
+        public string Cluster_StudyFile2_Title { get; set; }
+        public string Cluster_StudyFile3_Title { get; set; }
+        public string Cluster_StudyFile4_Title { get; set; }
+        public string Cluster_StudyFile5_Title { get; set; }
     
         public virtual Field Field { get; set; }
         public virtual Governorate Governorate { get; set; }
