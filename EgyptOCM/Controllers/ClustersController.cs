@@ -108,6 +108,13 @@ namespace EgyptOCM.Controllers
                     string imgExt;
                     string destName;
 
+                    var path = Server.MapPath("~/StudyFiles");
+
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
+                    }
+
                     if (cluster.Cluster_StudyFile1 != null)
                     {
                         sourceName = Path.GetFileName(Request.Files[0].FileName);
@@ -156,6 +163,15 @@ namespace EgyptOCM.Controllers
                         Request.Files[4].SaveAs(destName);
                         cluster.Cluster_StudyFile5 = sourceName;
                     }
+
+                    path = Server.MapPath("~/ProductImages");
+
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
+                    }
+
+
                     if (cluster.Cluster_ProductImage != null)
                     {
                         sourceName = Path.GetFileName(Request.Files[2].FileName);
@@ -166,6 +182,14 @@ namespace EgyptOCM.Controllers
                         Request.Files[2].SaveAs(destName);
                         cluster.Cluster_ProductImage = cluster.Cluster_ID + imgExt;
                     }
+
+                    path = Server.MapPath("~/ProcessImages");
+
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
+                    }
+
 
 
                     if (cluster.Cluster_ProcessImage != null)
@@ -318,6 +342,14 @@ namespace EgyptOCM.Controllers
 
                     myCluster.AdditionalInfo = cluster.AdditionalInfo;
 
+                    var path = Server.MapPath("~/StudyFiles");
+
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
+                    }
+
+
                     if (cluster.Cluster_StudyFile1 != null)
                     {
                         sourceName = Path.GetFileName(Request.Files[0].FileName);
@@ -346,7 +378,7 @@ namespace EgyptOCM.Controllers
                         imgExt = System.IO.Path.GetExtension(sourceName);
                         destName = Server.MapPath("~/StudyFiles/") + sourceName;
                         Request.Files[2].SaveAs(destName);
-                        cluster.Cluster_StudyFile3 = sourceName;
+                        myCluster.Cluster_StudyFile3 = sourceName;
                     }
 
                     if (cluster.Cluster_StudyFile4 != null)
@@ -355,7 +387,7 @@ namespace EgyptOCM.Controllers
                         imgExt = System.IO.Path.GetExtension(sourceName);
                         destName = Server.MapPath("~/StudyFiles/") + sourceName;
                         Request.Files[3].SaveAs(destName);
-                        cluster.Cluster_StudyFile4 = sourceName;
+                        myCluster.Cluster_StudyFile4 = sourceName;
                     }
 
                     if (cluster.Cluster_StudyFile5 != null)
@@ -364,7 +396,14 @@ namespace EgyptOCM.Controllers
                         imgExt = System.IO.Path.GetExtension(sourceName);
                         destName = Server.MapPath("~/StudyFiles/") + sourceName;
                         Request.Files[4].SaveAs(destName);
-                        cluster.Cluster_StudyFile5 = sourceName;
+                        myCluster.Cluster_StudyFile5 = sourceName;
+                    }
+
+                    path = Server.MapPath("~/ProductImages");
+
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
                     }
 
 
@@ -378,6 +417,13 @@ namespace EgyptOCM.Controllers
                         Request.Files[2].SaveAs(destName);
                         myCluster.Cluster_ProductImage = cluster.Cluster_ID + imgExt;
 
+                    }
+
+                    path = Server.MapPath("~/ProcessImages");
+
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(path);
                     }
 
 
