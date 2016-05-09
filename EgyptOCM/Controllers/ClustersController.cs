@@ -297,11 +297,11 @@ namespace EgyptOCM.Controllers
                     myCluster.Cluster_DetailPage2_Title = cluster.Cluster_DetailPage2_Title;
                     myCluster.Cluster_DetailPage3_Title = cluster.Cluster_DetailPage3_Title;
 
-                    myCluster.Cluster_StudyFile1_Title = cluster.Cluster_StudyFile1_Title;
-                    myCluster.Cluster_StudyFile2_Title = cluster.Cluster_StudyFile2_Title;
-                    myCluster.Cluster_StudyFile3_Title = cluster.Cluster_StudyFile3_Title;
-                    myCluster.Cluster_StudyFile4_Title = cluster.Cluster_StudyFile4_Title;
-                    myCluster.Cluster_StudyFile5_Title = cluster.Cluster_StudyFile5_Title;
+                    //myCluster.Cluster_StudyFile1_Title = cluster.Cluster_StudyFile1_Title;
+                    //myCluster.Cluster_StudyFile2_Title = cluster.Cluster_StudyFile2_Title;
+                    //myCluster.Cluster_StudyFile3_Title = cluster.Cluster_StudyFile3_Title;
+                    //myCluster.Cluster_StudyFile4_Title = cluster.Cluster_StudyFile4_Title;
+                    //myCluster.Cluster_StudyFile5_Title = cluster.Cluster_StudyFile5_Title;
 
 
                     myCluster.Govt_ID = cluster.Govt_ID;
@@ -349,8 +349,18 @@ namespace EgyptOCM.Controllers
                         System.IO.Directory.CreateDirectory(path);
                     }
 
-
-                    if (cluster.Cluster_StudyFile1 != null)
+                    if (cluster.Cluster_StudyFile1_Title == null && myCluster.Cluster_StudyFile1_Title != "")
+                    {
+                        
+                        string fullPath = Request.MapPath("~/StudyFiles/" + myCluster.Cluster_StudyFile1);
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+                        myCluster.Cluster_StudyFile1 = "";
+                        myCluster.Cluster_StudyFile1_Title = "";
+                    }
+                    else if (cluster.Cluster_StudyFile1 != null && cluster.Cluster_StudyFile1_Title != null)
                     {
                         sourceName = Path.GetFileName(Request.Files[0].FileName);
                         imgExt = System.IO.Path.GetExtension(sourceName);
@@ -358,10 +368,25 @@ namespace EgyptOCM.Controllers
                         destName = Server.MapPath("~/StudyFiles/") + sourceName;
                         Request.Files[0].SaveAs(destName);
                         myCluster.Cluster_StudyFile1 = sourceName;
-
+                        myCluster.Cluster_StudyFile1_Title = cluster.Cluster_StudyFile1_Title;
                     }
+                    else if (cluster.Cluster_StudyFile1_Title != null)
+                    {
+                         myCluster.Cluster_StudyFile1_Title = cluster.Cluster_StudyFile1_Title;
+                    }
+                    
+                    if (cluster.Cluster_StudyFile2_Title == null && myCluster.Cluster_StudyFile2_Title != "")
+                    {
 
-                    if (cluster.Cluster_StudyFile2 != null)
+                        string fullPath = Request.MapPath("~/StudyFiles/" + myCluster.Cluster_StudyFile2);
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+                        myCluster.Cluster_StudyFile2 = "";
+                        myCluster.Cluster_StudyFile2_Title = "";
+                    }
+                    else if (cluster.Cluster_StudyFile2 != null && cluster.Cluster_StudyFile2_Title != null)
                     {
                         sourceName = Path.GetFileName(Request.Files[1].FileName);
                         imgExt = System.IO.Path.GetExtension(sourceName);
@@ -369,36 +394,87 @@ namespace EgyptOCM.Controllers
 
                         Request.Files[1].SaveAs(destName);
                         myCluster.Cluster_StudyFile2 = sourceName;
-
+                        myCluster.Cluster_StudyFile2_Title = cluster.Cluster_StudyFile2_Title;
+                    }
+                    else if (cluster.Cluster_StudyFile2_Title != null)
+                    {
+                        myCluster.Cluster_StudyFile2_Title = cluster.Cluster_StudyFile2_Title;
                     }
 
-                    if (cluster.Cluster_StudyFile3 != null)
+                    if (cluster.Cluster_StudyFile3_Title == null && myCluster.Cluster_StudyFile3_Title != "")
                     {
+                        
+                        string fullPath = Request.MapPath("~/StudyFiles/" + myCluster.Cluster_StudyFile3);
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+                        myCluster.Cluster_StudyFile3 = "";
+                        myCluster.Cluster_StudyFile3_Title = "";
+                    }
+                    else if (cluster.Cluster_StudyFile3 != null && cluster.Cluster_StudyFile3_Title != null)
+                   {
                         sourceName = Path.GetFileName(Request.Files[2].FileName);
                         imgExt = System.IO.Path.GetExtension(sourceName);
                         destName = Server.MapPath("~/StudyFiles/") + sourceName;
                         Request.Files[2].SaveAs(destName);
                         myCluster.Cluster_StudyFile3 = sourceName;
+                        myCluster.Cluster_StudyFile3_Title = cluster.Cluster_StudyFile3_Title;
+                    }
+                    else if (cluster.Cluster_StudyFile3_Title != null)
+                    {
+                        myCluster.Cluster_StudyFile3_Title = cluster.Cluster_StudyFile3_Title;
                     }
 
-                    if (cluster.Cluster_StudyFile4 != null)
+                    if (cluster.Cluster_StudyFile4_Title == null && myCluster.Cluster_StudyFile4_Title != "")
+                    {
+
+                        string fullPath = Request.MapPath("~/StudyFiles/" + myCluster.Cluster_StudyFile4);
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+                        myCluster.Cluster_StudyFile4 = "";
+                        myCluster.Cluster_StudyFile4_Title = "";
+                    }
+                    else if (cluster.Cluster_StudyFile4 != null && cluster.Cluster_StudyFile4_Title != null)
                     {
                         sourceName = Path.GetFileName(Request.Files[3].FileName);
                         imgExt = System.IO.Path.GetExtension(sourceName);
                         destName = Server.MapPath("~/StudyFiles/") + sourceName;
                         Request.Files[3].SaveAs(destName);
                         myCluster.Cluster_StudyFile4 = sourceName;
+                        myCluster.Cluster_StudyFile4_Title = cluster.Cluster_StudyFile4_Title;
+                    }
+                    else if (cluster.Cluster_StudyFile4_Title != null)
+                    {
+                        myCluster.Cluster_StudyFile4_Title = cluster.Cluster_StudyFile4_Title;
                     }
 
-                    if (cluster.Cluster_StudyFile5 != null)
+                    if (cluster.Cluster_StudyFile5_Title == null && myCluster.Cluster_StudyFile5_Title != "")
+                    {
+
+                        string fullPath = Request.MapPath("~/StudyFiles/" + myCluster.Cluster_StudyFile5);
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+                        myCluster.Cluster_StudyFile5 = "";
+                        myCluster.Cluster_StudyFile5_Title = "";
+                    }
+                    else if (cluster.Cluster_StudyFile5 != null && cluster.Cluster_StudyFile5_Title != null)
                     {
                         sourceName = Path.GetFileName(Request.Files[4].FileName);
                         imgExt = System.IO.Path.GetExtension(sourceName);
                         destName = Server.MapPath("~/StudyFiles/") + sourceName;
                         Request.Files[4].SaveAs(destName);
                         myCluster.Cluster_StudyFile5 = sourceName;
+                        myCluster.Cluster_StudyFile5_Title = cluster.Cluster_StudyFile5_Title;
                     }
-
+                    else if (cluster.Cluster_StudyFile5_Title != null)
+                    {
+                        myCluster.Cluster_StudyFile5_Title = cluster.Cluster_StudyFile5_Title;
+                    }
                     path = Server.MapPath("~/ProductImages");
 
                     if (!System.IO.Directory.Exists(path))

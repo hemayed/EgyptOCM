@@ -316,6 +316,15 @@
         </div>
 
         <div class="form-group">
+            @Html.Label("اسم ملف الدراسة الحالي 1", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-5" })
+            <div class="col-md-5">
+                @Html.Raw(Model.Cluster_StudyFile1)
+                @*@Html.Label(@Html.Raw(Model.Cluster_StudyFile1), new { htmlAttributes = new { @class = "control-label" } })*@
+
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Cluster_StudyFile1_Title, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-5" })
             <div class="col-md-5">
                 @Html.EditorFor(model => model.Cluster_StudyFile1_Title, new { htmlAttributes = new { @class = "form-control" } })
@@ -330,6 +339,12 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.Label("اسم ملف الدراسة الحالي 2", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-5" })
+            <div class="col-md-5">
+                @Html.Raw(Model.Cluster_StudyFile2)
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Cluster_StudyFile2_Title, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-5" })
@@ -344,6 +359,13 @@
             <div class="col-md-5">
                 @Html.TextBoxFor(model => model.Cluster_StudyFile3, new { type = "file" })
                 @Html.ValidationMessageFor(model => model.Cluster_StudyFile3)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("اسم ملف الدراسة الحالي 3", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-5" })
+            <div class="col-md-5">
+                @Html.Raw(Model.Cluster_StudyFile3)
             </div>
         </div>
 
@@ -364,6 +386,13 @@
         </div>
 
         <div class="form-group">
+            @Html.Label("اسم ملف الدراسة الحالي 4", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-5" })
+            <div class="col-md-5">
+                @Html.Raw(Model.Cluster_StudyFile4)
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Cluster_StudyFile4_Title, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-5" })
             <div class="col-md-5">
                 @Html.EditorFor(model => model.Cluster_StudyFile4_Title, new { htmlAttributes = new { @class = "form-control" } })
@@ -376,6 +405,13 @@
             <div class="col-md-5">
                 @Html.TextBoxFor(model => model.Cluster_StudyFile5, new { type = "file" })
                 @Html.ValidationMessageFor(model => model.Cluster_StudyFile5)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("اسم ملف الدراسة الحالي 5", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-5" })
+            <div class="col-md-5">
+                @Html.Raw(Model.Cluster_StudyFile5)
             </div>
         </div>
 

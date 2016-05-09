@@ -183,32 +183,32 @@ namespace EgyptOCM.Models
 
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
         [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
-        [Display(Name = "نسبة المشاريع الرسمية في التجمع ")]
+        [Display(Name = "نسبة المنشآت الرسمية في التجمع ")]
         public double? OfficalProjects;
 
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
         [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
-        [Display(Name = "نسبة المشاريع الغير رسمية في التجمع ")]
+        [Display(Name = "نسبة المنشآت الغير رسمية في التجمع ")]
         public double? NonOfficalProjects;
 
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
         [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
-        [Display(Name = "نسبة الشركات المتناهية الصغر (أى عدد العمالة من 1 إلى 4) ")]
+        [Display(Name = "نسبة المنشآت ذات عدد عمالة من 1 إلى 4 ")]
         public double? CompanyPercent1;
 
  [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
  [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
- [Display(Name = "نسبة الشركات الصغيرة (أى عدد العمالة من 5 إلى 49) ")]
+ [Display(Name = "نسبة المنشآت ذات عدد عمالة من 5 إلى 49  ")]
         public double? CompanyPercent2;
 
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
         [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
-        [Display(Name = "نسبة الشركات المتوسطة (أى عدد العمالة من 50 إلى 99) ")]
+        [Display(Name = "نسبة المنشآت ذات عدد عمالة من 50 إلى 99 ")]
  public double? CompanyPercent3;
 
           [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:P2}")]
           [Range(0.0000, 1.0000, ErrorMessage = "  يجب ان تكون النسبة بين 0 و 1")]
-          [Display(Name = "نسبة الشركات الكبيرة (أى عدد العمالة أكثر من 100) ")]
+          [Display(Name = "نسبة المنشآت ذات عدد عمالة أكثر من 100")]
         public double? CompanyPercent4;
 
 
@@ -313,7 +313,7 @@ namespace EgyptOCM.Models
         public string ExportVolume;
 
         [StringLength(10)]
-        [Display(Name = " متوسط مستوى الدخل للورشة / الشركة / الوحدة الإنتاجية فى التجمع  ")]
+        [Display(Name = " متوسط مستوى الدخل للمنشأة / الوحدة الإنتاجية  ")]
         public string IncomeLevel_ID;
        
 
