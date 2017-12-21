@@ -2990,7 +2990,8 @@ TableTools.BUTTONS = {
 				"success": oConfig.fnAjaxComplete,
 				"dataType": "json",
 				"type": "POST",
-				"cache": false,
+                "cache": false,
+                "async":true,
 				"error": function () {
 					alert( "Error detected when sending table data to server" );
 				}

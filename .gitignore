@@ -187,3 +187,8 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/EgyptOCM/StudyFiles/1203.pdf
+/EgyptOCM/StudyFiles/1431-2784-1-SM.pdf
+*.PDF
+/EgyptOCM/StudyFiles/Dr.Pinaki.pptx
+/.vs/EgyptOCM/v15/Server/sqlite3/db.lock

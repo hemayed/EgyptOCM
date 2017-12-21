@@ -13,7 +13,7 @@ var mapclat, mapclon;
 var num = 0;
 var zoomLevel;
 var govtpin = new Array(27);
-var clusterpin = new Array(1000);
+var clusterpin = new Array(500);
 
 var lastZoomLevel;
 
@@ -47,21 +47,23 @@ function GetMap(myArray) {
     try {
        
 
-        map = new Microsoft.Maps.Map(document.getElementById("myMap"),
+        map = new Microsoft.Maps.Map(document.getElementById('myMap'),
                {
-                   credentials: "ApsJjM2R2v3U-bnatAF3H0IY4cbas9KnKtIwKzOsLVICG3kqmJaDUZEh_8J-RzR7",
+                   //credentials: 'ApsJjM2R2v3U-bnatAF3H0IY4cbas9KnKtIwKzOsLVICG3kqmJaDUZEh_8J-RzR7',
                    center: new Microsoft.Maps.Location(mapclat, mapclon),
                    mapTypeId: Microsoft.Maps.MapTypeId.road,
                    zoom: zoomLevel,
-                   customizeOverlays: true,
-                   width: mapWidth,
-                   height: mapHeight
+                   //customizeOverlays: true
+                   
                });
     }
-   
+
+    
     catch (e) {
         alert("الخريطة غير متاحة الان - حاول لاحقا");
     }
+
+    
 
     if (num == 0 && map != null) {
         map.setView({ center: new Microsoft.Maps.Location(30.1, 31.26), zoom: 7 });
@@ -69,28 +71,48 @@ function GetMap(myArray) {
 
     if ( num>0 && map != null) {
 
+        
         lastZoomLevel = map.getZoom();
-        Microsoft.Maps.Events.addHandler(map, 'viewchangeend', viewChanged);
 
+        /*
         govtLayer = new Microsoft.Maps.EntityCollection();
         map.entities.push(govtLayer);
+        */
 
+        govtLayer = new Microsoft.Maps.Layer();
+        map.layers.insert(govtLayer);
+
+        /*
         var govtTooltipLayer = new Microsoft.Maps.EntityCollection();
         map.entities.push(govtTooltipLayer);
 
         govtTooltip = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 210, height: 160, offset: new Microsoft.Maps.Point(-120, 35) });
 
         govtTooltipLayer.push(govtTooltip);
+        */
+
+        govtTooltip = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 210, height: 160, offset: new Microsoft.Maps.Point(-120, 35) });
+        govtTooltip.setMap(map);
+
         AddGovtLocations();
 
+        /*
         clusterLayer = new Microsoft.Maps.EntityCollection();
         map.entities.push(clusterLayer);
+        */
 
+        clusterLayer = new Microsoft.Maps.Layer();
+        map.layers.insert(clusterLayer);
+
+        /*
         var clusterInfoBoxLayer = new Microsoft.Maps.EntityCollection();
         map.entities.push(clusterInfoBoxLayer);
 
         clusterTooltip = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 200, height: 150, offset: new Microsoft.Maps.Point(-100, 35) });
         clusterInfoBoxLayer.push(clusterTooltip);
+        */
+        clusterTooltip = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 200, height: 150, offset: new Microsoft.Maps.Point(-100, 35) });
+        clusterTooltip.setMap(map);
 
         //clusterInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false, width: 200, offset: new Microsoft.Maps.Point(-100, 15) });
         //clusterInfoBoxLayer.push(clusterInfobox);
@@ -98,6 +120,8 @@ function GetMap(myArray) {
         CreateGovtLayer();
 
         createClusterLayer(0);
+
+        Microsoft.Maps.Events.addHandler(map, 'viewchangeend', viewChanged);
 
         if (zoomLevel > 8) {
 
@@ -120,11 +144,16 @@ function showGovtLayer() {
             govtpin[i].setOptions({ visible: true });
         }
     }
-    for (i = 0; i < num; i++) {
+    
+    for (i = 0; i < num; i++) {   //num
         clusterpin[i].setOptions({ visible: false });
         // clusterInfobox.setOptions({ visible: false });
         clusterTooltip.setOptions({ visible: false });
     }
+    map.layers[0].setVisible(true);
+    
+    map.layers[1].setVisible(false);
+    
 }
 
 function showClusterLayer() {
@@ -134,24 +163,29 @@ function showClusterLayer() {
             govtTooltip.setOptions({ visible: false });
         }
     }
+
     for (i = 0; i < num; i++) {
-        if (clusterData[i].Govt_ID == clickedGovtID || clickedGovtID==0){
+        if (clusterData[i].Govt_ID == clickedGovtID || clickedGovtID == 0) {
             clusterpin[i].setOptions({ visible: true });
         }
-        else{
+        else {
 
-        clusterpin[i].setOptions({ visible: false });
+            clusterpin[i].setOptions({ visible: false });
         }
 
-     //clusterpin[i].setOptions({ visible: true });
+        //clusterpin[i].setOptions({ visible: true });
     }
+
+    map.layers[0].setVisible(false);
+
+    map.layers[1].setVisible(true);
+
 }
 
-
 function viewChanged(e) {
-    var currentZoomLevel = map.getZoom();
-    var targetZoom = map.getTargetZoom();
-
+    //var currentZoomLevel = map.getZoom();
+    var targetZoom = map.getZoom();
+    
     if (targetZoom > 8)
         showClusterLayer();
     else
@@ -253,7 +287,7 @@ function AddGovtLocations() {
         if (govtData[i].Cluster_Num != 0)
             govtLocations.push(new Microsoft.Maps.Location(govtData[i].Govt_Lat, govtData[i].Govt_Long));
         else
-            govtLocations.push(new Microsoft.Maps.Location());
+            govtLocations.push(new Microsoft.Maps.Location(0,0));
     }
 
 }
@@ -267,7 +301,8 @@ function CreateGovtLayer() {
         if (govtData[i].Cluster_Num != 0) {
             var pintxt = String(i + 1);
             var divID = "govt" + pintxt;
-            pushpinOptions = { visible: false, typeName: 'govt' + pintxt, visible: true, icon: "/Images/blueflag.png", width: 40, height: 40 };
+            //pushpinOptions = { visible: false, text: 'govt' + pintxt, visible: true, icon: "/Images/blueflag.png", width: 40, height: 40 };
+            pushpinOptions = { visible: false, catId: govtData[i].Govt_ID, visible: true, icon: "/Images/blueflag.png", width: 40, height: 40 };
             govtpin[i] = new Microsoft.Maps.Pushpin(govtLocations[i], pushpinOptions);
 
             govtpin[i].Title = " محافظة " + govtData[i].Govt_Name;
@@ -286,7 +321,7 @@ function CreateGovtLayer() {
 
             Microsoft.Maps.Events.addHandler(govtpin[i], 'click', function (e) { createClusterLayer(e); });
 
-            govtLayer.push(govtpin[i]);
+            govtLayer.add(govtpin[i]);
         }
 
     }
@@ -303,13 +338,15 @@ function displayGovtTooltip(e) {
         //govtTooltip.setOptions({ visible: true, title: e.target.Title, description: e.target.Description });
         govtTooltip.setOptions({ visible: true, htmlContent: e.target.htmlContent });
     }
-
+ 
 }
 
 
 function hideGovtTooltip(e) {
     if (govtTooltip != null)
         govtTooltip.setOptions({ visible: false });
+
+ 
 }
 
 
@@ -324,7 +361,8 @@ function createClusterLayer(e) {
     var linkSection = "";
 
     if (e.targetType == 'pushpin') {
-        govtID = e.target.getTypeName().match(/\d+$/)[0];
+        //govtID = e.target.Title().match(/\d+$/)[0];
+        govtID = e.target.catId;
 
         clickedGovtID = govtID;
 
@@ -353,19 +391,19 @@ function createClusterLayer(e) {
 
             switch (clusterData[i].Sector_ID) {
 
-                case 1: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/RedPushPin.png", visible: false };
+                case 1: pushpinOptions = { text: pintxt,  icon: "/Images/RedPushPin.png", visible: false };
                     break;
-                case 2: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/GreenPushPin.png", visible: false };
+                case 2: pushpinOptions = { text: pintxt,  icon: "/Images/GreenPushPin.png", visible: false };
                     break;
-                case 3: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/LightBluePushPin.png", visible: false };
+                case 3: pushpinOptions = { text: pintxt,  icon: "/Images/LightBluePushPin.png", visible: false };
                     break;
-                case 4: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/BlackPushPin.png", visible: false };
+                case 4: pushpinOptions = { text: pintxt,  icon: "/Images/BlackPushPin.png", visible: false };
                     break;
-                case 5: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/YellowPushPin.png", visible: false };
+                case 5: pushpinOptions = { text: pintxt,  icon: "/Images/YellowPushPin.png", visible: false };
                     break;
-                case 6: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/GreenPushPin.png", visible: false };
+                case 6: pushpinOptions = { text: pintxt,  icon: "/Images/GreenPushPin.png", visible: false };
                     break;
-                default: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/TransparentPushPin.png", visible: false };
+                default: pushpinOptions = { text: pintxt,  icon: "/Images/TransparentPushPin.png", visible: false };
                     break;
             }
 
@@ -403,7 +441,7 @@ function createClusterLayer(e) {
             Microsoft.Maps.Events.addHandler(clusterpin[i], 'mouseout', hideClusterTooltip);
 
 
-            clusterLayer.push(clusterpin[i]);
+            clusterLayer.add(clusterpin[i]);
            
 
 
@@ -437,7 +475,7 @@ function HaversineDistance(lat1, lon1, lat2, lon2) {
 
     return earthRadius * c;
 }
-
+    
 
 function AddData(myArray) {
 
@@ -455,17 +493,17 @@ function AddData(myArray) {
 
         switch (clusterData[i].Sector_ID) {
 
-            case 1: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/RedPushPin.png", visible: true };
+            case 1: pushpinOptions = { title: 'pin' + pintxt, text: pintxt, icon: "/Images/RedPushPin.png", visible: false };
                 break;
-            case 2: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/GreenPushPin.png", visible: true };
+            case 2: pushpinOptions = { title: 'pin' + pintxt, text: pintxt, icon: "/Images/GreenPushPin.png", visible: false };
                 break;
-            case 3: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/LightBluePushPin.png", visible: true };
+            case 3: pushpinOptions = { title: 'pin' + pintxt, text: pintxt, icon: "/Images/LightBluePushPin.png", visible: false };
                 break;
-            case 4: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/BlackPushPin.png", visible: true };
+            case 4: pushpinOptions = { title: 'pin' + pintxt, text: pintxt, icon: "/Images/BlackPushPin.png", visible: false };
                 break;
-            case 5: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/YellowPushPin.png", visible: true };
+            case 5: pushpinOptions = { title: 'pin' + pintxt, text: pintxt, icon: "/Images/YellowPushPin.png", visible: false };
                 break;
-            default: pushpinOptions = { typeName: 'pin' + pintxt, text: pintxt, icon: "/Images/TransparentPushPin.png", visible: true };
+            default: pushpinOptions = { title: 'pin' + pintxt, text: pintxt, icon: "/Images/TransparentPushPin.png", visible: false };
                 break;
         }
 
@@ -484,6 +522,7 @@ function AddData(myArray) {
             '$.ajax({url: "/Home/ClusterDetail",' +
             'type: "POST",' +
             'dataType: \'json\',' +
+            'crossDomain: true,'+
             'contentType: \'application/json; charset=utf-8\',' +
             'data: JSON.stringify(dataToSend),' +
             'success: function (results) {' +
@@ -516,7 +555,7 @@ function AddData(myArray) {
 
 
 
-        dataLayer.push(pin[i]);
+        dataLayer.add(pin[i]);
 
 
     }
@@ -528,11 +567,13 @@ function displayClusterTooltip(e) {
         //clusterInfobox.setOptions({ visible: true, title: e.target.Title });
         clusterTooltip.setOptions({ visible: true, htmlContent: e.target.htmlContent });
     }
-}
+
+  }
 
 function hideClusterTooltip() {
     if (clusterTooltip != null)
         clusterTooltip.setOptions({ visible: false });
+
 }
 
 
